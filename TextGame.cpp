@@ -26,6 +26,7 @@ void TextGame::run()
 	player = new TextGamePlayer(temp, sinput);
 	system("cls");
 	UI::showStatus(*player);
+	UI::showWhattodo();
 	cin >> temp;
 
 	

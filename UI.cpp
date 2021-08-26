@@ -36,7 +36,7 @@ void UI::showStartScreen()
 void UI::showStatus(TextGamePlayer p)
 {
 	gotoxy(80, 15);
-	cout << "================================" << endl;
+	cout << "==========================" << endl;
 	gotoxy(80, 16);
 	cout << "Name : " << p.getName() << endl;
 	gotoxy(80, 17);
@@ -50,7 +50,7 @@ void UI::showStatus(TextGamePlayer p)
 	gotoxy(80, 21);
 	cout << "Defence : " << p.getDefence() << endl;
 	gotoxy(80, 22);
-	cout << "================================" << endl;
+	cout << "==========================" << endl;
 
 }
 
