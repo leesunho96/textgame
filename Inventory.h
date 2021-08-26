@@ -17,7 +17,8 @@ class Inventory
 
 	struct potion {
 		string name;
-		int 
+		int hpPoint;
+		int mpPoint;
 	};
 
 public:
