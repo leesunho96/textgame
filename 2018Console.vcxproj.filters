@@ -7,6 +7,9 @@
     <ClInclude Include="TextGamePlayer.h" />
     <ClInclude Include="TextGameInfo.h" />
     <ClInclude Include="Inventory.h" />
+    <ClInclude Include="Weapon.h" />
+    <ClInclude Include="Armor.h" />
+    <ClInclude Include="Potion.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp" />
@@ -16,5 +19,8 @@
     <ClCompile Include="TextGamePlayer.cpp" />
     <ClCompile Include="TextGameInfo.cpp" />
     <ClCompile Include="Inventory.cpp" />
+    <ClCompile Include="Weapon.cpp" />
+    <ClCompile Include="Armor.cpp" />
+    <ClCompile Include="Potion.cpp" />
   </ItemGroup>
 </Project>

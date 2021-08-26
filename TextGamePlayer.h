@@ -9,6 +9,8 @@ class TextGamePlayer
 	int iDefence;
 	string sName;
 	string sjob;
+	int iMoney = 0;
+	
 
 public:
 
@@ -20,6 +22,7 @@ public:
 	int getDefence();
 	string getName();
 	string getJob();
+	
 
 };
 
