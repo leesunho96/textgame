@@ -10,6 +10,7 @@
     <ClInclude Include="Weapon.h" />
     <ClInclude Include="Armor.h" />
     <ClInclude Include="Potion.h" />
+    <ClInclude Include="Dungeon.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp" />
@@ -22,5 +23,6 @@
     <ClCompile Include="Weapon.cpp" />
     <ClCompile Include="Armor.cpp" />
     <ClCompile Include="Potion.cpp" />
+    <ClCompile Include="Dungeon.cpp" />
   </ItemGroup>
 </Project>

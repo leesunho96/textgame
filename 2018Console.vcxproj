@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Armor.h" />
+    <ClInclude Include="Dungeon.h" />
     <ClInclude Include="Inventory.h" />
     <ClInclude Include="Potion.h" />
     <ClInclude Include="stdafx.h" />
@@ -32,6 +33,7 @@
   <ItemGroup>
     <ClCompile Include="Armor.cpp" />
     <ClCompile Include="classMain.cpp" />
+    <ClCompile Include="Dungeon.cpp" />
     <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="Potion.cpp" />
     <ClCompile Include="stdafx.cpp">

@@ -2,6 +2,9 @@
 #include "Armor.h"
 #include "TextGameInfo.h"
 
+
+class TextGameInfo;
+
 Armor::Armor(int i)
 {
 	srand(time(NULL));

@@ -1,9 +1,11 @@
 #pragma once
 
 
-static class TextGameInfo
+class TextGameInfo
 {
 public:
+
+	//각각 직업들 초기 스탯
 	class Rogue
 	{
 	public:
@@ -23,8 +25,41 @@ public:
 		const static int iDefence = 2;
 		const static int iavoidance = 5;	
 	};
-
+	
+	
 	class Mage
+	{
+	public:
+		const static int iHP = 10;
+		const static int iMP = 15;
+		const static int iAttack = 10;
+		const static int iDefence = 2;
+		const static int iavoidance = 5;
+	};
+
+
+	//각각 몬스터 초기 스탯
+	class Ogre
+	{
+	public:
+		const static int iHP = 15;
+		const static int iMP = 3;
+		const static int iAttack = 3;
+		const static int iDefence = 2;
+		const static int iavoidance = 5;
+	};
+
+	class Goblin
+	{
+	public:
+		const static int iHP = 15;
+		const static int iMP = 3;
+		const static int iAttack = 3;
+		const static int iDefence = 2;
+		const static int iavoidance = 5;
+	};
+
+	class Oak
 	{
 	public:
 		const static int iHP = 8;
@@ -34,6 +69,9 @@ public:
 		const static int iavoidance = 1;		
 	};
 
+
+
+	//각각 무기들 초기스탯
 
 	class OneHandedSword {
 	public: 
@@ -84,6 +122,8 @@ public:
 		const static int iUsemana = 20;
 	};
 
+
+	//포션 초기 스탯
 	class potion
 	{
 	public:
@@ -91,6 +131,8 @@ public:
 		const static int iHealMP = 10;
 	};
 
+
+	//각각 방어구 초기 스탯
 	class LightArmor
 	{
 	public:
@@ -100,6 +142,7 @@ public:
 
 	class HeavyArmor
 	{
+	public:
 		const static int itype = 2;
 		const static int iArmorDefence = 10;
 	};
