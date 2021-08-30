@@ -1,6 +1,17 @@
 #include "stdafx.h"
 #include "Dungeon.h"
+#include "UI.h"
 #include "TextGamePlayer.h"
+
+void Dungeon::invalidate()
+{
+	
+	UI::showDungeonMap();
+	for (size_t i = 0; i < Enemy.size(); i++)
+	{
+		Enemy.at(i).getLocation().first;
+	}
+}
 
 Dungeon::Dungeon(TextGamePlayer & player)
 {
@@ -14,19 +25,28 @@ Dungeon::Dungeon(TextGamePlayer & player)
 		{
 		case 4:
 			tEnemy = new TextGamePlayer(itemp, "Ogre");
-			Enemy.push_back(*tEnemy);
+			EnemyVector.push_back(*tEnemy);
 			break;
 		case 5:
 			tEnemy = new TextGamePlayer(itemp, "Goblin");
-			Enemy.push_back(*tEnemy);
+			EnemyVector.push_back(*tEnemy);
 			break;
 		case 6:
 			tEnemy = new TextGamePlayer(itemp, "Oak");
-			Enemy.push_back(*tEnemy);
+			EnemyVector.push_back(*tEnemy);
 			break;
 		}
 	}
 
+	for (size_t i = 0; i < EnemyVector.size(); i++)
+	{
+		maparr[EnemyVector.at(i).first][EnemyVector.at[i].second] = Enemy;
+	}
+
+}
+
+void Dungeon::run()
+{
 }
 
 void Dungeon::showEnemyNum()

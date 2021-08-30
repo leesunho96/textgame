@@ -4,10 +4,17 @@ class TextGamePlayer;
 
 class Dungeon
 {
-	vector<TextGamePlayer> Enemy;
+	vector<TextGamePlayer> EnemyVector;
+
+	void invalidate();
+
+	int maparr[19][14] = { UNLOCK,  };
 
 public:
 	Dungeon(TextGamePlayer &player);
+
+	void run();
+
 
 	void showEnemyNum();
 };

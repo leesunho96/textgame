@@ -5,12 +5,9 @@
 
 
 
-void UI::gotoxy(int x, int y)
-{
-	COORD pos = { x,y };
+///¡â  ¢·  ¢¹ ¡ä ¡Ú | ¡á
 
-	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), pos);
-}
+
 
 void UI::movecursor()
 {
@@ -70,6 +67,88 @@ void UI::showWhattodo()
 
 }
 
+void UI::showDungeonMap()
+{
+	gotoxy(20, 5);
+	cout << "¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á" << endl;
+	gotoxy(98, 5);
+	cout << "¡á";
+	gotoxy(20, 6);
+	cout << "¡á" << endl;
+	gotoxy(98, 6);
+	cout << "¡á" << endl;
+	gotoxy(20, 7);
+	cout << "¡á" << endl;
+	gotoxy(98, 7);
+	cout << "¡á" << endl;
+	gotoxy(20, 8);
+	cout << "¡á" << endl;
+	gotoxy(98, 8);
+	cout << "¡á" << endl;
+	gotoxy(20, 9);
+	cout << "¡á" << endl;
+	gotoxy(98, 9);
+	cout << "¡á" << endl;
+	gotoxy(20, 10);
+	cout << "¡á" << endl;
+	gotoxy(98, 10);
+	cout << "¡á" << endl;
+	gotoxy(20, 11);
+	cout << "¡á" << endl;
+	gotoxy(98, 11);
+	cout << "¡á" << endl;
+	gotoxy(20, 12);
+	cout << "¡á" << endl;
+	gotoxy(98, 12);
+	cout << "¡á" << endl;
+	gotoxy(20, 13);
+	cout << "¡á" << endl;
+	gotoxy(98, 13);
+	cout << "¡á" << endl;
+	gotoxy(20, 14);
+	cout << "¡á" << endl;
+	gotoxy(98, 14);
+	cout << "¡á" << endl;
+	gotoxy(20, 15);
+	cout << "¡á" << endl;
+	gotoxy(98, 15);
+	cout << "¡á" << endl;
+	gotoxy(20, 16);
+	cout << "¡á" << endl;
+	gotoxy(98, 16);
+	cout << "¡á" << endl;
+	gotoxy(20, 17);
+	cout << "¡á" << endl;
+	gotoxy(98, 17);
+	cout << "¡á" << endl;
+	gotoxy(20, 18);
+	cout << "¡á" << endl;
+	gotoxy(98, 18);
+	cout << "¡á" << endl;
+	gotoxy(20, 19);
+	cout << "¡á" << endl;
+	gotoxy(98, 19);
+	cout << "¡á" << endl;
+	gotoxy(20, 20);
+	cout << "¡á" ;
+	gotoxy(26, 20);
+	cout << "¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á" << endl;
+
+
+	for (size_t j = 0; j < 14; j++)
+	{
+	for (size_t i = 1; i < 20; i++)
+		{
+
+			gotoxy(19 + 4 * i, 6 + j);
+			cout << "¡Ú";
+		}
+
+	}
+	
+	movecursor();
+}
+
 void UI::showChooseJob()
 {
 	system("cls");
@@ -91,4 +170,6 @@ void UI::chooseName()
 	cout << "Write Your Name" << endl;
 	movecursor();
 }
+
+
 

@@ -35,9 +35,46 @@ TextGamePlayer::TextGamePlayer(int i, string sname)
 		sjob = "MAGE";
 		break;
 
-
+	case 4:
+		iHp = TextGameInfo::Ogre::iHP;
+		iMp = TextGameInfo::Ogre::iMP;
+		iAttack = TextGameInfo::Ogre::iAttack;
+		iDefence = TextGameInfo::Ogre::iDefence;
+		iAvoidance = TextGameInfo::Ogre::iavoidance;
+		sName = "OGRE";
+		sjob = "WORRIER";
+		break;
+	case 5:
+		iHp = TextGameInfo::Goblin::iHP;
+		iMp = TextGameInfo::Goblin::iMP;
+		iAttack = TextGameInfo::Goblin::iAttack;
+		iDefence = TextGameInfo::Goblin::iDefence;
+		iAvoidance = TextGameInfo::Goblin::iavoidance;
+		sName = "GOBLIN";
+		sjob = "ROGUE";
+		break;
+		break;
+	case 6:
+		iHp = TextGameInfo::Oak::iHP;
+		iMp = TextGameInfo::Oak::iMP;
+		iAttack = TextGameInfo::Oak::iAttack;
+		iDefence = TextGameInfo::Oak::iDefence;
+		iAvoidance = TextGameInfo::Oak::iavoidance;
+		sName = "OAK";
+		sjob = "MAGE";
+		break;
+		
 	}
 
+	switch ((int)(i / 4))
+	{
+	case 1:
+		location = make_pair(0, 0);
+		break;
+	case 2:
+		location = make_pair(rand() %  )
+		break;
+	}
 }
 
 int TextGamePlayer::getAttack()
@@ -73,4 +110,9 @@ string TextGamePlayer::getName()
 string TextGamePlayer::getJob()
 {
 	return sjob;
+}
+
+pair<int, int> TextGamePlayer::getLocation()
+{
+	return location;
 }

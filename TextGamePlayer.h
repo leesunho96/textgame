@@ -10,11 +10,13 @@ class TextGamePlayer
 	string sName;
 	string sjob;
 	int iMoney = 0;
+	pair<int, int> location;
 	
 
 public:
 
 	TextGamePlayer(int i, string sname);
+
 	int getAttack();
 	int getHP();
 	int getMP();
@@ -22,7 +24,7 @@ public:
 	int getDefence();
 	string getName();
 	string getJob();
-	
+	pair<int, int> getLocation();
 
 };
 
