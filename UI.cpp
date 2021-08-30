@@ -32,22 +32,23 @@ void UI::showStartScreen()
 
 void UI::showStatus(TextGamePlayer p)
 {
-	gotoxy(80, 15);
-	cout << "==========================" << endl;
-	gotoxy(80, 16);
-	cout << "Name : " << p.getName() << endl;
-	gotoxy(80, 17);
-	cout << "Job :" << p.getJob() << endl;
-	gotoxy(80, 18);
-	cout << "HP : " << p.getHP() << endl;
-	gotoxy(80, 19);
-	cout << "MP : " << p.getMP() << endl;
-	gotoxy(80, 20);
-	cout << "Attack : " << p.getAttack() << endl;
-	gotoxy(80, 21);
-	cout << "Defence : " << p.getDefence() << endl;
 	gotoxy(80, 22);
 	cout << "==========================" << endl;
+	gotoxy(80, 23);
+	cout << "Name : " << p.getName() << endl;
+	gotoxy(80, 24);
+	cout << "Job :" << p.getJob() << endl;
+	gotoxy(80, 25);
+	cout << "HP : " << p.getHP() << endl;
+	gotoxy(80, 26);
+	cout << "MP : " << p.getMP() << endl;
+	gotoxy(80, 27);
+	cout << "Attack : " << p.getAttack() << endl;
+	gotoxy(80, 28);
+	cout << "Defence : " << p.getDefence() << endl;
+	gotoxy(80, 29);
+	cout << "==========================" << endl;
+	movecursor();
 
 }
 
@@ -133,19 +134,6 @@ void UI::showDungeonMap()
 	cout << "¡á" ;
 	gotoxy(26, 20);
 	cout << "¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á" << endl;
-
-
-	for (size_t j = 0; j < 14; j++)
-	{
-	for (size_t i = 1; i < 20; i++)
-		{
-
-			gotoxy(19 + 4 * i, 6 + j);
-			cout << "¡Ú";
-		}
-
-	}
-	
 	movecursor();
 }
 

@@ -19,8 +19,13 @@
 #define None 0
 #define PLAYER 1
 #define ENEMY 2
-#define UNLOCK 3;
-#define OPEN 4;
+#define LOCK 3
+#define OPEN 4
+
+#define RIGHT 75
+#define LEFT 77
+#define UP 72
+#define DOWN 80
 
 using namespace std;
 

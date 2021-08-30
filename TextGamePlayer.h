@@ -11,6 +11,7 @@ class TextGamePlayer
 	string sjob;
 	int iMoney = 0;
 	pair<int, int> location;
+	void setlocation(int input);
 	
 
 public:

@@ -5,6 +5,10 @@
 
 TextGamePlayer::TextGamePlayer(int i, string sname)
 {
+
+	// 캐릭터 타입을 입력받아서 해당되는 스탯으로 초기화.
+	// 플레이어일 경우 1 ~ 3, 몹일경우 4 ~ 6
+
 	switch (i)
 	{
 	case 1:
@@ -66,13 +70,15 @@ TextGamePlayer::TextGamePlayer(int i, string sname)
 		
 	}
 
+
+	// 몹일 경우 랜덤위치로 생성, 플레이어 일 경우 0,0으로 설정
 	switch ((int)(i / 4))
 	{
-	case 1:
-		location = make_pair(0, 0);
+	case 0:
+		location = make_pair(0, 12);
 		break;
-	case 2:
-		location = make_pair(rand() %  )
+	case 1:
+		location = make_pair(rand() % VERTICALSIZE, rand() % HORIZENTALSIZE);
 		break;
 	}
 }
