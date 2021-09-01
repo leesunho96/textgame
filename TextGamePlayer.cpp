@@ -3,6 +3,39 @@
 #include "TextGameInfo.h"
 
 
+void TextGamePlayer::setlocation(int input)
+{
+	switch (input)
+	{
+	case UP:
+		location.second -= 1;
+		break;
+	case DOWN:
+		location.second += 1;
+		break;
+	case LEFT:
+		location.first -= 1;
+		break;
+	case RIGHT:
+		location.first += 1;
+		break;
+	default:
+		break;
+	}
+}
+
+bool TextGamePlayer::applydamege(int iAttack)
+{
+	srand(time(NULL));
+	if (rand() % 10 < iAvoidance)
+		return false;
+	else
+	{
+		iHp = iHp - (iDefence - iAttack);
+		return true;
+	}
+}
+
 TextGamePlayer::TextGamePlayer(int i, string sname)
 {
 

@@ -25,12 +25,10 @@ void UI::showStartScreen()
 	gotoxy(45, 22);
 	cout << "press any button to start" << endl;
 	movecursor();
-	getchar();
-	system("cls");
 
 }
 
-void UI::showStatus(TextGamePlayer p)
+void UI::showStatus(TextGamePlayer &p)
 {
 	gotoxy(80, 22);
 	cout << "==========================" << endl;
@@ -47,6 +45,8 @@ void UI::showStatus(TextGamePlayer p)
 	gotoxy(80, 28);
 	cout << "Defence : " << p.getDefence() << endl;
 	gotoxy(80, 29);
+	cout << "X : " << p.getLocation().first << " Y : " << p.getLocation().second << endl;
+	gotoxy(80, 30);
 	cout << "==========================" << endl;
 	movecursor();
 
@@ -135,6 +135,33 @@ void UI::showDungeonMap()
 	gotoxy(26, 20);
 	cout << "¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á" << endl;
 	movecursor();
+}
+
+void UI::showBattleMap(vector<int> pattern)
+{
+	//¡â  ¢·  ¢¹ ¡ä
+	for (size_t i = 1; i <= pattern.size(); i++)
+	{
+		gotoxy(10 * i, 20);
+		switch (pattern.at(pattern.size() - 1))
+		{
+		case UP:
+			cout << "¡â";
+			break;
+		case DOWN:
+			cout << "¡ä";
+			break;
+		case RIGHT:
+			cout << "¢·";
+			break;
+		case LEFT:
+			cout << "¢¹";
+			break;
+		}
+		pattern.pop_back();
+
+	}
+
 }
 
 void UI::showChooseJob()

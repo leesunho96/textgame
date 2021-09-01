@@ -9,6 +9,7 @@
 #include <map>
 #include <queue>
 #include <time.h>
+#include <conio.h>
 
 #define LeftPoint 23
 #define LEFTMOVESIZE 4

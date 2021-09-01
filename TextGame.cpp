@@ -5,6 +5,7 @@
 #include "Dungeon.h"
 
 
+
 void TextGame::run()
 {
 	int temp;
@@ -13,6 +14,7 @@ void TextGame::run()
 
 
 	UI::showStartScreen();
+	getchar();
 	while (true)
 	{
 		UI::showChooseJob();

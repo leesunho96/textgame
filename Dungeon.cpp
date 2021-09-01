@@ -19,6 +19,7 @@ void Dungeon::invalidate()
 				cout << "║з";
 				break;
 			case OPEN:
+				cout << " ";
 				break;
 			case ENEMY:
 				temp = getActorLocation(i, j);
@@ -42,12 +43,12 @@ pair<int, int> Dungeon::getActorLocation(int i, int j)
 	return make_pair(23 + 4 * i, 6 + j);
 }
 
-void Dungeon::move()
+void Dungeon::move(int iinput)
 {
-	if (available(_getch()))
-	{
 
-	}
+	maparr[player->getLocation().first][player->getLocation().second] = OPEN;
+	player->setlocation(iinput);
+	maparr[player->getLocation().first][player->getLocation().second] = PLAYER;
 }
 
 bool Dungeon::available(int ichoice)
@@ -55,26 +56,53 @@ bool Dungeon::available(int ichoice)
 	switch (ichoice)
 	{
 	//аб
-	case 75:
+	case LEFT:
 		if (player->getLocation().first - 1 >= 0)
-		{
-			
 			return true;
-		}
 		else return false;				
 		//©Л
-	case 77:
+	case RIGHT:
 		if (player->getLocation().first  + 1 < VERTICALSIZE) return true;
-		else return false;
-		
+		else return false;		
 		//╩С
-	case 72:
+	case UP:
 		if (player->getLocation().second -1 >= 0) return true;
 		else return false;		
 		//го
-	case 80:
+	case DOWN:
 		if (player->getLocation().second + 1 < HORIZENTALSIZE) return true;
 		else return false;
+	}
+
+	exit(0);
+}
+
+bool Dungeon::turn(int index)
+{
+
+	player->applydamege(EnemyVector[index].getAttack());
+	EnemyVector[index].applydamege(player->getAttack());
+	return false;
+}
+
+bool Dungeon::battle(int index)
+{
+	while (player->getHP() >= 0 && EnemyVector[index].getHP() >= 0)
+	{
+		turn(index);
+	}
+
+	if(player->getHP() <= 0)
+		return false;
+	return true;
+}
+
+int Dungeon::findEnemy(pair<int, int> Enemylocation)
+{
+	for (size_t i = 0; i < EnemyVector.size(); i++)
+	{
+		if (EnemyVector[i].getLocation() == player->getLocation())
+			return i;
 	}
 }
 
@@ -133,13 +161,45 @@ Dungeon::Dungeon(TextGamePlayer *player)
 void Dungeon::run()
 {
 	system("cls");
+
 	UI::showDungeonMap();
 	UI::showStatus(*player);
 
 	while (EnemyVector.size() != 0)
 	{
+		int temp;
 		invalidate();
-		move();
+
+		temp = getch();
+		if (temp == 224)
+		{
+			temp = getch();
+		}
+
+		if (available(temp))
+		{
+			move(temp);
+
+			gotoxy(0, 50);
+
+			for (size_t i = 0; i < VERTICALSIZE; i++)
+			{
+				for (size_t j = 0; j < HORIZENTALSIZE; j++)
+				{
+					cout << maparr[i][j] << "  ";
+				}
+				cout << endl;
+			}
+
+			if (maparr[player->getLocation().first][player->getLocation().second] == ENEMY)
+			{				
+				if (battle(findEnemy(player->getLocation())))
+				{
+					exit(0);
+				}
+			}
+		}
+		
 	}
 
 }
