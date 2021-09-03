@@ -11,6 +11,7 @@ class TextGamePlayer
 	string sjob;
 	int iMoney = 0;
 	pair<int, int> location;
+	int identity;
 	
 
 public:
@@ -27,6 +28,7 @@ public:
 	pair<int, int> getLocation();
 	void setlocation(int input);
 	bool applydamege(int iAttack);
+	int getIendtity();
 
 };
 

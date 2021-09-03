@@ -8,16 +8,16 @@ void TextGamePlayer::setlocation(int input)
 	switch (input)
 	{
 	case UP:
-		location.second -= 1;
+		location.second--;
 		break;
 	case DOWN:
-		location.second += 1;
+		location.second++;
 		break;
 	case LEFT:
-		location.first -= 1;
+		location.first--;
 		break;
 	case RIGHT:
-		location.first += 1;
+		location.first++;
 		break;
 	default:
 		break;
@@ -31,9 +31,14 @@ bool TextGamePlayer::applydamege(int iAttack)
 		return false;
 	else
 	{
-		iHp = iHp - (iDefence - iAttack);
+		iHp = iHp + (iDefence - iAttack);
 		return true;
 	}
+}
+
+int TextGamePlayer::getIendtity()
+{
+	return identity;
 }
 
 TextGamePlayer::TextGamePlayer(int i, string sname)
@@ -108,10 +113,12 @@ TextGamePlayer::TextGamePlayer(int i, string sname)
 	switch ((int)(i / 4))
 	{
 	case 0:
-		location = make_pair(0, 12);
+		location = make_pair(0, 0);
+		identity = PLAYER;
 		break;
 	case 1:
 		location = make_pair(rand() % VERTICALSIZE, rand() % HORIZENTALSIZE);
+		identity = ENEMY;
 		break;
 	}
 }

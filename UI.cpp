@@ -30,26 +30,46 @@ void UI::showStartScreen()
 
 void UI::showStatus(TextGamePlayer &p)
 {
-	gotoxy(80, 22);
-	cout << "==========================" << endl;
-	gotoxy(80, 23);
-	cout << "Name : " << p.getName() << endl;
-	gotoxy(80, 24);
-	cout << "Job :" << p.getJob() << endl;
-	gotoxy(80, 25);
-	cout << "HP : " << p.getHP() << endl;
-	gotoxy(80, 26);
-	cout << "MP : " << p.getMP() << endl;
-	gotoxy(80, 27);
-	cout << "Attack : " << p.getAttack() << endl;
-	gotoxy(80, 28);
-	cout << "Defence : " << p.getDefence() << endl;
-	gotoxy(80, 29);
-	cout << "X : " << p.getLocation().first << " Y : " << p.getLocation().second << endl;
-	gotoxy(80, 30);
-	cout << "==========================" << endl;
-	movecursor();
-
+	if (p.getIendtity() == PLAYER)
+	{
+		gotoxy(80, 22);
+		cout << "==========================" << endl;
+		gotoxy(80, 23);
+		cout << "Name : " << p.getName() << endl;
+		gotoxy(80, 24);
+		cout << "Job :" << p.getJob() << endl;
+		gotoxy(80, 25);
+		cout << "HP : " << p.getHP() << endl;
+		gotoxy(80, 26);
+		cout << "MP : " << p.getMP() << endl;
+		gotoxy(80, 27);
+		cout << "Attack : " << p.getAttack() << endl;
+		gotoxy(80, 28);
+		cout << "Defence : " << p.getDefence() << endl;
+		gotoxy(80, 29);
+		cout << "==========================" << endl;
+		movecursor();
+	}
+	else
+	{
+		gotoxy(0, 22);
+		cout << "==========================" << endl;
+		gotoxy(0, 23);
+		cout << "Name : " << p.getName() << endl;
+		gotoxy(0, 24);
+		cout << "Job :" << p.getJob() << endl;
+		gotoxy(0, 25);
+		cout << "HP : " << p.getHP() << endl;
+		gotoxy(0, 26);
+		cout << "MP : " << p.getMP() << endl;
+		gotoxy(0, 27);
+		cout << "Attack : " << p.getAttack() << endl;
+		gotoxy(0, 28);
+		cout << "Defence : " << p.getDefence() << endl;
+		gotoxy(0, 29);
+		cout << "==========================" << endl;
+		movecursor();
+	}
 }
 
 void UI::showWhattodo()

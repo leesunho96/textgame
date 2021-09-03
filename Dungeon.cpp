@@ -19,7 +19,9 @@ void Dungeon::invalidate()
 				cout << "★";
 				break;
 			case OPEN:
-				cout << " ";
+				temp = getActorLocation(i, j);
+				gotoxy(temp.first, temp.second);
+				printf("  ");
 				break;
 			case ENEMY:
 				temp = getActorLocation(i, j);
@@ -43,12 +45,33 @@ pair<int, int> Dungeon::getActorLocation(int i, int j)
 	return make_pair(23 + 4 * i, 6 + j);
 }
 
-void Dungeon::move(int iinput)
+bool Dungeon::move(int iinput)
 {
 
-	maparr[player->getLocation().first][player->getLocation().second] = OPEN;
-	player->setlocation(iinput);
-	maparr[player->getLocation().first][player->getLocation().second] = PLAYER;
+	maparr[playerlocaiton.first][playerlocaiton.second] = OPEN;
+
+	switch (iinput)
+	{
+	case UP:
+		playerlocaiton.second--;
+		break;
+	case DOWN:
+		playerlocaiton.second++;
+		break;
+	case RIGHT:
+		playerlocaiton.first++;
+		break;
+	case LEFT:
+		playerlocaiton.first--;
+		break;
+	default:
+		break;
+	}
+	if (maparr[playerlocaiton.first][playerlocaiton.second] == ENEMY)
+	{
+		return true;
+	}
+	return false;
 }
 
 bool Dungeon::available(int ichoice)
@@ -57,20 +80,19 @@ bool Dungeon::available(int ichoice)
 	{
 	//좌
 	case LEFT:
-		if (player->getLocation().first - 1 >= 0)
-			return true;
+		if (playerlocaiton.first - 1 >= 0) return true;
 		else return false;				
 		//우
 	case RIGHT:
-		if (player->getLocation().first  + 1 < VERTICALSIZE) return true;
+		if (playerlocaiton.first  + 1 < VERTICALSIZE) return true;
 		else return false;		
 		//상
 	case UP:
-		if (player->getLocation().second -1 >= 0) return true;
+		if (playerlocaiton.second -1 >= 0) return true;
 		else return false;		
 		//하
 	case DOWN:
-		if (player->getLocation().second + 1 < HORIZENTALSIZE) return true;
+		if (playerlocaiton.second + 1 < HORIZENTALSIZE) return true;
 		else return false;
 	}
 
@@ -79,17 +101,29 @@ bool Dungeon::available(int ichoice)
 
 bool Dungeon::turn(int index)
 {
-
+	UI::showStatus(*player);
+	UI::showStatus(EnemyVector.at(index));
+	cin;
+	gotoxy(0, 0);
+	cout << "플레이어의 공격" << endl;
 	player->applydamege(EnemyVector[index].getAttack());
+	UI::showStatus(EnemyVector.at(index));
+	cin;
+	cout << "적의 공격" << endl;
 	EnemyVector[index].applydamege(player->getAttack());
+	UI::showStatus(*player);
 	return false;
 }
 
 bool Dungeon::battle(int index)
 {
+	system("cls");
+
 	while (player->getHP() >= 0 && EnemyVector[index].getHP() >= 0)
 	{
+		cin;
 		turn(index);
+
 	}
 
 	if(player->getHP() <= 0)
@@ -101,7 +135,7 @@ int Dungeon::findEnemy(pair<int, int> Enemylocation)
 {
 	for (size_t i = 0; i < EnemyVector.size(); i++)
 	{
-		if (EnemyVector[i].getLocation() == player->getLocation())
+		if (EnemyVector[i].getLocation() == playerlocaiton)
 			return i;
 	}
 }
@@ -132,7 +166,8 @@ Dungeon::Dungeon(TextGamePlayer *player)
 			EnemyVector.push_back(*tEnemy);
 			break;
 		}
-	}
+		free(tEnemy);
+ 	}
 
 	for (size_t i = 0; i < VERTICALSIZE; i++)
 	{
@@ -147,28 +182,31 @@ Dungeon::Dungeon(TextGamePlayer *player)
 	//던전에 등장할 몹 위치 맵에 저장.
 	for (size_t i = 0; i < EnemyVector.size(); i++)
 	{
-		pair<int, int> temp = EnemyVector.at(i).getLocation();
+		pair<int, int> temp = EnemyVector[i].getLocation();
 		maparr[temp.first][temp.second] = ENEMY;
 	}
 
 	//player 위치 반환받아서 던전 맵에 저장.
-	pair<int, int> temp = player->getLocation();
-	maparr[temp.first][temp.second] = PLAYER;
-
-
+	playerlocaiton = player->getLocation();
+	maparr[playerlocaiton.first][playerlocaiton.second] = PLAYER;
 }
 
 void Dungeon::run()
 {
+	// 화면 초기화.
 	system("cls");
 
-	UI::showDungeonMap();
-	UI::showStatus(*player);
+	// 던전 맵 출력 하고, 플레이어 스테이터스 출력
 
+
+	//모든 적 죽으면 해당 던전 클리어.
 	while (EnemyVector.size() != 0)
 	{
 		int temp;
+		// 화면 변경 함수.
 		invalidate();
+		UI::showDungeonMap();
+		UI::showStatus(*player);
 
 		temp = getch();
 		if (temp == 224)
@@ -178,26 +216,18 @@ void Dungeon::run()
 
 		if (available(temp))
 		{
-			move(temp);
-
-			gotoxy(0, 50);
-
-			for (size_t i = 0; i < VERTICALSIZE; i++)
+			if (move(temp))
 			{
-				for (size_t j = 0; j < HORIZENTALSIZE; j++)
-				{
-					cout << maparr[i][j] << "  ";
+				if (!battle(findEnemy(playerlocaiton)))
+				{					
+					break;
 				}
-				cout << endl;
-			}
-
-			if (maparr[player->getLocation().first][player->getLocation().second] == ENEMY)
-			{				
-				if (battle(findEnemy(player->getLocation())))
+				else
 				{
-					exit(0);
+					continue;
 				}
 			}
+			maparr[playerlocaiton.first][playerlocaiton.second] = PLAYER;
 		}
 		
 	}
