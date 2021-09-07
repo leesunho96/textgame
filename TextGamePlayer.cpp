@@ -26,12 +26,19 @@ void TextGamePlayer::setlocation(int input)
 
 bool TextGamePlayer::applydamege(int iAttack)
 {
+	gotoxy(0, 1);
 	srand(time(NULL));
 	if (rand() % 10 < iAvoidance)
+	{
+		cout << sName << "은 회피하였습니다." << endl;
+		getch();
 		return false;
+	}
 	else
 	{
 		iHp = iHp + (iDefence - iAttack);
+		cout << sName << "은 " << -iDefence + iAttack << "의 피해를 입었습니다." << endl;
+		getch();
 		return true;
 	}
 }

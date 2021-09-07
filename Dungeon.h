@@ -12,9 +12,10 @@ class Dungeon
 	bool move(int iinput);
 	bool available(int ichoice);
 	bool turn(int index);
-	bool battle(int index);
+	void battle(int index);
 	int findEnemy(pair<int, int> Enemylocation);
 	pair<int, int> playerlocaiton;
+	int moveIcon();
 
 
 

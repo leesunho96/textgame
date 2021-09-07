@@ -32,8 +32,8 @@ using namespace std;
 
 
 void gotoxy(int x, int y);
-//{
-//	COORD pos = { x,y };
-//
-//	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), pos);
-//}
+void textcolor(int color_number);
+void setBackgroundColor();
+void setBackgroundBlack();
+void setBackgroundGreen();
+void setBackgroundGray();

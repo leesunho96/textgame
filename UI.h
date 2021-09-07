@@ -1,4 +1,7 @@
 #pragma once
+
+class TextGamePlayer;
+
 class UI
 {
 
@@ -12,6 +15,6 @@ public:
 	static void showWhattodo();
 	static void showDungeonMap();
 	static void showBattleMap(vector<int> pattern);
-
+	static void showBattle();
 };
 

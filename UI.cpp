@@ -184,6 +184,37 @@ void UI::showBattleMap(vector<int> pattern)
 
 }
 
+void UI::showBattle()
+{
+	setBackgroundGray();
+	gotoxy(10, 10);
+	cout << "                                                                                                       ";
+	gotoxy(10, 11);
+	cout << "                                                                                                       ";
+	gotoxy(10, 12);
+	cout << "                                                                                                       ";
+	gotoxy(10, 13);
+	cout << "                                                                                                       ";
+	gotoxy(10, 14);
+	cout << "                                                                                                       ";
+	gotoxy(10, 15);
+	cout << "                                                                                                       ";
+	setBackgroundGreen();
+	gotoxy(55, 10);
+	cout << "      ";
+	gotoxy(55, 11);
+	cout << "      ";
+	gotoxy(55, 12);
+	cout << "      ";
+	gotoxy(55, 13);
+	cout << "      ";
+	gotoxy(55, 14);
+	cout << "      ";
+	gotoxy(55, 15);
+	cout << "      ";
+	setBackgroundBlack();
+}
+
 void UI::showChooseJob()
 {
 	system("cls");
