@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "TextGamePlayer.h"
 #include "TextGameInfo.h"
-
+#include "Inventory.h"
 
 void TextGamePlayer::setlocation(int input)
 {
@@ -127,6 +127,15 @@ TextGamePlayer::TextGamePlayer(int i, string sname)
 		location = make_pair(rand() % VERTICALSIZE, rand() % HORIZENTALSIZE);
 		identity = ENEMY;
 		break;
+	}
+
+
+	switch (i / 4)
+	{
+	case 1:
+		playerInventory = new Inventory(i / 4);
+	case 2:
+
 	}
 }
 

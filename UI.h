@@ -1,6 +1,7 @@
 #pragma once
 
 class TextGamePlayer;
+class Item;
 
 class UI
 {
@@ -16,5 +17,7 @@ public:
 	static void showDungeonMap();
 	static void showBattleMap(vector<int> pattern);
 	static void showBattle();
+	static void showInventory(vector<Item> &input);
+
 };
 

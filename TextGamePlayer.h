@@ -12,7 +12,7 @@ class TextGamePlayer
 	int iMoney = 0;
 	pair<int, int> location;
 	int identity;
-	
+	Inventory *playerInventory;
 
 public:
 

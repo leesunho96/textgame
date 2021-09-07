@@ -2,6 +2,8 @@
 #include "TextGamePlayer.h"
 #include "UI.h"
 #include "TextGameInfo.h"
+#include "Inventory.h"
+#include "Item.h"
 
 
 
@@ -214,6 +216,23 @@ void UI::showBattle()
 	cout << "      ";
 	setBackgroundBlack();
 }
+
+void UI::showInventory(vector<Item>& input)
+{
+	cout << "===========================";
+	for (auto& temp : input)
+	{		
+		if (temp.getType() != -1) cout << "타입 : " << temp.getType() << endl;
+		cout << "이름 : " << temp.getName() << endl;
+		cout << "효과 : " << temp.getEffect() << endl;
+ 	}
+	cout << "===========================";
+}
+
+
+
+
+
 
 void UI::showChooseJob()
 {

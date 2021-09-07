@@ -37,6 +37,8 @@ void TextGame::run()
 	case 1:
 		Dungeon* dungeon = new Dungeon(player);
 		(*dungeon).run();
+		break;
+	case 2:
 
 	}
 

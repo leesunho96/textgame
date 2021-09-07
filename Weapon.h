@@ -1,5 +1,6 @@
 #pragma once
-class Weapon
+
+class Weapon : public Item
 {
 	int itype;
 	int iAttack;
@@ -8,5 +9,8 @@ class Weapon
 
 public:
 	Weapon(int itype);
+	virtual string getName();
+	virtual int getType();
+	virtual int getEffect();
 };
 
