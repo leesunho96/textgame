@@ -1,7 +1,7 @@
+#pragma once
 #include "stdafx.h"
-#include "Potion.h"
 #include "TextGameInfo.h"
-#include "Item.h"
+#include "Potion.h"
 
 Potion::Potion()
 {

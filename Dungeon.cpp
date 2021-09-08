@@ -1,3 +1,4 @@
+#pragma once
 #include "stdafx.h"
 #include "Dungeon.h"
 #include "UI.h"

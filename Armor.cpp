@@ -1,3 +1,4 @@
+#pragma once
 #include "stdafx.h"
 #include "Armor.h"
 #include "TextGameInfo.h"

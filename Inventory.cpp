@@ -1,23 +1,23 @@
+#pragma once
 #include "stdafx.h"
 #include "Inventory.h"
-#include "TextGamePlayer.h"
 #include "Potion.h"
 #include "Weapon.h"
 #include "Armor.h"
 #include "UI.h"
 
+
 Inventory::Inventory(int input)
 {
-
 	switch (input)
 	{
-	case 1:
+	case 0:
 		for (size_t i = 0; i < 5; i++)
 		{
 			potionInventory.push_back(*(new Potion()));
 		}
 		break;
-	case 2:
+	case 1:
 		int input = rand() % 9;
 		
 		switch (input)
@@ -38,11 +38,6 @@ Inventory::Inventory(int input)
 			potionInventory.push_back(*(new Potion()));
 			break;
 		}
-		break;
 	}
 }
 
-void Inventory::showInven()
-{
-
-}

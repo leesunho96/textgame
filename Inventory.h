@@ -1,6 +1,6 @@
 #pragma once
 
-class TextGameInfo;
+
 class Potion;
 class Weapon;
 class Armor;
@@ -12,5 +12,5 @@ public:
 	vector<Potion> potionInventory;
 	vector<Weapon> weaponInventory;
 	vector<Armor> armorInverntory;
-	void showInven();
+
 };

@@ -1,3 +1,4 @@
+#pragma once
 #include "stdafx.h"
 #include "TextGamePlayer.h"
 #include "TextGameInfo.h"
@@ -46,6 +47,12 @@ bool TextGamePlayer::applydamege(int iAttack)
 int TextGamePlayer::getIendtity()
 {
 	return identity;
+}
+
+Inventory* TextGamePlayer::getInventory()
+{
+	return playerInventory;
+	// TODO: 여기에 반환 구문을 삽입합니다.
 }
 
 TextGamePlayer::TextGamePlayer(int i, string sname)
@@ -129,14 +136,8 @@ TextGamePlayer::TextGamePlayer(int i, string sname)
 		break;
 	}
 
+	playerInventory = new Inventory((int)(i / 4));
 
-	switch (i / 4)
-	{
-	case 1:
-		playerInventory = new Inventory(i / 4);
-	case 2:
-
-	}
 }
 
 int TextGamePlayer::getAttack()

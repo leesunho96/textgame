@@ -12,6 +12,7 @@
     <ClInclude Include="Potion.h" />
     <ClInclude Include="Dungeon.h" />
     <ClInclude Include="Item.h" />
+    <ClInclude Include="Store.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp" />
@@ -26,5 +27,6 @@
     <ClCompile Include="Potion.cpp" />
     <ClCompile Include="Dungeon.cpp" />
     <ClCompile Include="Item.cpp" />
+    <ClCompile Include="Store.cpp" />
   </ItemGroup>
 </Project>

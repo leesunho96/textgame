@@ -1,10 +1,12 @@
+#pragma once
 #include "stdafx.h"
 #include "TextGamePlayer.h"
 #include "UI.h"
 #include "TextGameInfo.h"
 #include "Inventory.h"
-#include "Item.h"
-
+#include "Weapon.h"
+#include "Armor.h"
+#include "Potion.h"
 
 
 ///△  ◁  ▷ ▽ ★ | ■
@@ -217,17 +219,55 @@ void UI::showBattle()
 	setBackgroundBlack();
 }
 
-void UI::showInventory(vector<Item>& input)
+void UI::showInventory(vector<Weapon>& input)
 {
-	cout << "===========================";
+	cout << "===========================" << endl;
+	cout << "무기 LIST" << endl;
 	for (auto& temp : input)
 	{		
-		if (temp.getType() != -1) cout << "타입 : " << temp.getType() << endl;
+		cout << "타입 : " << temp.getType() << endl;
 		cout << "이름 : " << temp.getName() << endl;
 		cout << "효과 : " << temp.getEffect() << endl;
  	}
-	cout << "===========================";
+	cout << "==========================="<< endl;
 }
+
+void UI::showInventory(vector<Armor>& input)
+{
+	cout << "===========================" << endl;
+	cout << "방어구 LIST" << endl;
+	for (auto& temp : input)
+	{		
+		cout << "타입 : " << temp.getType() << endl;
+		cout << "이름 : " << temp.getName() << endl;
+		cout << "효과 : " << temp.getEffect() << endl;
+ 	}
+	cout << "===========================" << endl;
+}
+
+void UI::showInventory(vector<Potion>& input)
+{
+	cout << "===========================" << endl;
+	cout << "포션 LIST" << endl;
+	for (auto& temp : input)
+	{		
+		cout << "이름 : " << temp.getName() << endl;
+		cout << "효과 : " << temp.getEffect() << endl;
+ 	}
+	cout << "===========================" << endl;
+}
+
+void UI::showInventoryIntro()
+{
+	cout << "===========================" << endl;
+	cout << "어떤 인벤토리를 열까요?" << endl;
+	cout << "1. 무기 인벤토리" << endl;
+	cout << "2. 방어구 인벤토리" << endl;
+	cout << "3. 포션 인벤토리" << endl;
+	cout << "===========================" << endl;
+}
+
+
 
 
 

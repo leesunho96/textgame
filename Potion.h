@@ -1,4 +1,8 @@
 #pragma once
+#include "Item.h"
+
+class Item;
+
 class Potion : public Item
 {
 	int healHP;

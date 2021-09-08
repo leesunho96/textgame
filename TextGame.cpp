@@ -1,8 +1,10 @@
+#pragma once
 #include "stdafx.h"
 #include "TextGame.h"
 #include "TextGamePlayer.h"
 #include "UI.h"
 #include "Dungeon.h"
+#include "Item.h"
 
 
 
@@ -27,22 +29,33 @@ void TextGame::run()
 	UI::chooseName();
 	cin >> sinput;
 	player = new TextGamePlayer(temp, sinput);
-	system("cls");
-	UI::showStatus(*player);
-	UI::showWhattodo();
-	cin >> temp;
-
-	switch (temp)
+	while (true)
 	{
-	case 1:
-		Dungeon* dungeon = new Dungeon(player);
-		(*dungeon).run();
-		break;
-	case 2:
+		system("cls");
+		UI::showStatus(*player);
+		UI::showWhattodo();
+		cin >> temp;
+
+		switch (temp)
+		{
+		case 1:
+		{
+			Dungeon* dungeon = new Dungeon(player);
+			(*dungeon).run();
+			break;
+		}
+		case 2:
+		{
+			
+			break;
+		}
+		case 4:
+		{
+			exit(0);
+		}
+		}
 
 	}
-
-
 }
 
 

@@ -25,6 +25,7 @@
     <ClInclude Include="Item.h" />
     <ClInclude Include="Potion.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="Store.h" />
     <ClInclude Include="TextGame.h" />
     <ClInclude Include="TextGameInfo.h" />
     <ClInclude Include="TextGamePlayer.h" />
@@ -41,6 +42,7 @@
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Store.cpp" />
     <ClCompile Include="TextGame.cpp" />
     <ClCompile Include="TextGameInfo.cpp" />
     <ClCompile Include="TextGamePlayer.cpp" />

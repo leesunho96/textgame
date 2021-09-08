@@ -1,5 +1,7 @@
 #pragma once
 
+class Inventory;
+
 class TextGamePlayer
 {
 	int iAttack;
@@ -29,6 +31,7 @@ public:
 	void setlocation(int input);
 	bool applydamege(int iAttack);
 	int getIendtity();
+	Inventory* getInventory();
 
 };
 
