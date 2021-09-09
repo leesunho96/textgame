@@ -13,5 +13,6 @@ public:
 	virtual int getEffect();
 	virtual int getType();
 	virtual string getName();
+	virtual bool enhance();
 };
 

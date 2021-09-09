@@ -49,9 +49,9 @@ int TextGamePlayer::getIendtity()
 	return identity;
 }
 
-Inventory* TextGamePlayer::getInventory()
+Inventory& TextGamePlayer::getInventory()
 {
-	return playerInventory;
+	return *playerInventory;
 	// TODO: 여기에 반환 구문을 삽입합니다.
 }
 
@@ -138,6 +138,7 @@ TextGamePlayer::TextGamePlayer(int i, string sname)
 
 	playerInventory = new Inventory((int)(i / 4));
 
+
 }
 
 int TextGamePlayer::getAttack()
@@ -163,6 +164,24 @@ int TextGamePlayer::getAvoidance()
 int TextGamePlayer::getDefence()
 {
 	return iDefence;
+}
+
+int TextGamePlayer::getMoney()
+{
+	return iMoney;
+}
+
+bool TextGamePlayer::useMoney(int money)
+{
+	if (iMoney >= money)
+	{
+		iMoney -= money;
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 }
 
 string TextGamePlayer::getName()

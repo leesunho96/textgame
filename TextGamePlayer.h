@@ -16,6 +16,7 @@ class TextGamePlayer
 	int identity;
 	Inventory *playerInventory;
 
+
 public:
 
 	TextGamePlayer(int i, string sname);
@@ -25,13 +26,15 @@ public:
 	int getMP();
 	int getAvoidance();
 	int getDefence();
+	int getMoney();
+	bool useMoney(int money);
 	string getName();
 	string getJob();
 	pair<int, int> getLocation();
 	void setlocation(int input);
 	bool applydamege(int iAttack);
 	int getIendtity();
-	Inventory* getInventory();
+	Inventory& getInventory();
 
 };
 

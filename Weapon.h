@@ -8,10 +8,12 @@ class Weapon : public Item
 	int iUseStamina;
 	int iUseMana;
 
+
 public:
 	Weapon(int itype);
 	virtual string getName();
 	virtual int getType();
 	virtual int getEffect();
+	virtual bool enhance();
 };
 

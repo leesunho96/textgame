@@ -6,13 +6,14 @@ class Weapon;
 class Armor;
 class Potion;
 class Inventory;
+class Store;
 
 class UI
 {
 
-	static void movecursor();
 public:
 
+	static void movecursor();
 	static void showStartScreen();
 	static void showChooseJob();
 	static void chooseName();
@@ -25,6 +26,7 @@ public:
 	static void showInventory(vector<Armor> &input);
 	static void showInventory(vector<Potion> &input);
 	static void showInventoryIntro();
+	static void showStore(Store& store);
 
 };
 

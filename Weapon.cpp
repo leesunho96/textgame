@@ -46,6 +46,8 @@ Weapon::Weapon(int itype)
 	}
 }
 
+
+
 string Weapon::getName()
 {
 	switch (itype)
@@ -73,6 +75,18 @@ int Weapon::getType()
 int Weapon::getEffect()
 {
 	return iAttack;
+}
+
+bool Weapon::enhance()
+{
+	if ((rand() % 100) > 30)
+	{
+		iAttack += rand() % 4 + 1;
+	}
+	else
+	{
+		return false;
+	}
 }
 
 

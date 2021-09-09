@@ -7,7 +7,7 @@
 #include "Weapon.h"
 #include "Armor.h"
 #include "Potion.h"
-
+#include "Store.h"
 
 ///△  ◁  ▷ ▽ ★ | ■
 
@@ -264,6 +264,22 @@ void UI::showInventoryIntro()
 	cout << "1. 무기 인벤토리" << endl;
 	cout << "2. 방어구 인벤토리" << endl;
 	cout << "3. 포션 인벤토리" << endl;
+	cout << "-1 : 돌아가기" << endl;
+	cout << "===========================" << endl;
+}
+
+void UI::showStore(Store & store)
+{
+	cout << "===========================" << endl;
+	cout << "1. 무기 : ";
+	if (store.getWeapon() != nullptr) cout << "이름 : " << store.getWeapon()->getType() << " 공격력 : " << store.getWeapon()->getEffect() << endl;
+	else cout << "팔림";
+	cout << "2. 방어구 : ";
+	if (store.getArmor() != nullptr) cout << "이름 : " << store.getArmor()->getType() << " 공격력 : " << store.getArmor()->getEffect() << endl;
+	else cout << "팔림";
+	cout << "3. 포션 : ";
+	if (store.getPotion() != nullptr) cout << "이름 : " << store.getPotion()->getType() << " 공격력 : " << store.getPotion()->getEffect() << endl;
+	else cout << "팔림";
 	cout << "===========================" << endl;
 }
 

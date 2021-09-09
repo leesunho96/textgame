@@ -46,8 +46,7 @@ void TextGame::run()
 		}
 		case 2:
 		{
-			
-			break;
+			player->getInventory();
 		}
 		case 4:
 		{

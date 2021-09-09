@@ -28,3 +28,16 @@ string Armor::getName()
 {
 	return sName;
 }
+
+bool Armor::enhance()
+{
+	if ((rand() % 100) > 30)
+	{
+		iArmorDefense += rand() % 4 + 1;
+	}
+	else
+	{
+		return false;
+	}
+}
+

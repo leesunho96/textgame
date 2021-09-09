@@ -24,3 +24,8 @@ string Potion::getName()
 {
 	return "Æ÷¼Ç";
 }
+
+bool Potion::enhance()
+{
+	return false;
+}

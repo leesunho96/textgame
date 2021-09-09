@@ -41,3 +41,64 @@ Inventory::Inventory(int input)
 	}
 }
 
+void Inventory::pushInventory(Potion & push)
+{
+	potionInventory.push_back(push);
+}
+
+void Inventory::pushInventory(Weapon & push)
+{
+	weaponInventory.push_back(push);
+}
+
+void Inventory::pushInventory(Armor & push)
+{
+	armorInverntory.push_back(push);
+}
+
+void Inventory::popPotionInventory(int index)
+{
+	potionInventory.erase(begin(potionInventory) + index);
+}
+
+void Inventory::popWeaponInventory(int index)
+{
+	weaponInventory.erase(begin(weaponInventory) + index);
+}
+
+void Inventory::popArmorInventory(int index)
+{
+	armorInverntory.erase(begin(armorInverntory) + index);
+}
+
+void Inventory::run()
+{
+	system("cls");
+
+	while (true)
+	{
+		UI::showInventoryIntro;
+		int temp;
+		UI::movecursor();
+		cin >> temp;
+		if (temp == -1)
+			break;
+		switch (temp)
+		{
+		case 1:
+			UI::showInventory(weaponInventory);
+			break;
+		case 2:
+			UI::showInventory(armorInverntory);
+			break;
+		case 3:
+			UI::showInventory(potionInventory);
+			break;
+		default:
+			continue;
+		}
+	}
+}
+
+
+

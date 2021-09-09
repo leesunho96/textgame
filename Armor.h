@@ -7,10 +7,12 @@ class Armor : public Item
 	int itype;
 	string sName;
 
+
 public:
 	Armor(int i);
 	virtual int getEffect();
 	virtual int getType();
 	virtual string getName();
+	virtual bool enhance();
 };
 
