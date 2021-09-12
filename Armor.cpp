@@ -12,6 +12,7 @@ Armor::Armor(int i)
 	this->itype = i;
 	
 	i == 1 ? this->iArmorDefense = TextGameInfo::LightArmor::iArmorDefence + rand() % 5 : this->iArmorDefense = TextGameInfo::HeavyArmor::iArmorDefence + rand() % 5;
+	i == 1 ? this->iAvoidance = TextGameInfo::LightArmor::iAvoidance : this->iAvoidance = TextGameInfo::HeavyArmor::iavoidance;
 }
 
 int Armor::getEffect()
@@ -34,10 +35,17 @@ bool Armor::enhance()
 	if ((rand() % 100) > 30)
 	{
 		iArmorDefense += rand() % 4 + 1;
+		return true;
 	}
 	else
 	{
 		return false;
 	}
 }
+
+int Armor::getAvoidance()
+{
+	return iAvoidance;
+}
+
 

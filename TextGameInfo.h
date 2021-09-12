@@ -4,14 +4,13 @@
 class TextGameInfo
 {
 public:
-
 	//각각 직업들 초기 스탯
 	class Rogue
 	{
 	public:
 		const static int iMP = 5;
 		const static int iAttack = 5;
-		const static int iHP = 10;
+		const static int iHP = 100;
 		const static int iDefence = 1;
 		const static int iavoidance = 3;
 	};
@@ -19,7 +18,7 @@ public:
 	class Worrier
 	{
 	public:
-		const static int iHP = 15;
+		const static int iHP = 150;
 		const static int iMP = 3;
 		const static int iAttack = 3;
 		const static int iDefence = 2;
@@ -30,7 +29,7 @@ public:
 	class Mage
 	{
 	public:
-		const static int iHP = 10;
+		const static int iHP = 100;
 		const static int iMP = 15;
 		const static int iAttack = 10;
 		const static int iDefence = 2;
@@ -138,6 +137,7 @@ public:
 	public:
 		const static int itype = 1;
 		const static int iArmorDefence = 5;
+		const static int iAvoidance = 3;
 	};
 
 	class HeavyArmor
@@ -145,6 +145,7 @@ public:
 	public:
 		const static int itype = 2;
 		const static int iArmorDefence = 10;
+		const static int iavoidance = 1;
 	};
 	
 };

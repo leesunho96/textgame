@@ -5,6 +5,7 @@
 #include "UI.h"
 #include "Dungeon.h"
 #include "Item.h"
+#include "Inventory.h"
 
 
 
@@ -46,7 +47,8 @@ void TextGame::run()
 		}
 		case 2:
 		{
-			player->getInventory();
+			player->openInventory();
+			break;
 		}
 		case 4:
 		{

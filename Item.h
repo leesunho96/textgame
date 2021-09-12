@@ -6,5 +6,6 @@ public:
 	virtual int getType() = 0;
 	virtual int getEffect() = 0;
 	virtual bool enhance() = 0;
+
 };
 

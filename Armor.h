@@ -4,6 +4,7 @@
 class Armor : public Item
 {
 	int iArmorDefense;
+	int iAvoidance;
 	int itype;
 	string sName;
 
@@ -14,5 +15,7 @@ public:
 	virtual int getType();
 	virtual string getName();
 	virtual bool enhance();
+	int getAvoidance();
+
 };
 

@@ -4,8 +4,12 @@
 class Potion;
 class Weapon;
 class Armor;
+class TextGamePlayer;
+class Item;
 
 class Inventory {
+
+	void inventoryApply(TextGamePlayer* player, Item* input);
 
 public:
 	Inventory(int input);
@@ -21,7 +25,7 @@ public:
 	void popWeaponInventory(int index);
 	void popArmorInventory(int index);
 
-	void run();
+	void open(TextGamePlayer* player);
 
 
 };

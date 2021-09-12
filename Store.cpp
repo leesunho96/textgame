@@ -1,9 +1,10 @@
 #include "stdafx.h"
 #include "Store.h"
+#include "TextGamePlayer.h"
+#include "Inventory.h"
 #include "Weapon.h"
 #include "Armor.h"
 #include "Potion.h"
-#include "TextGamePlayer.h"
 
 Store::Store()
 {
@@ -21,9 +22,9 @@ Store::Store(Store & store)
 
 bool Store::buyPotion(TextGamePlayer &player)
 {
-	if (player.getMoney() > cost)
+	if (player.getMoney() > cost && potion != nullptr)
 	{
-		player.getInventory().pushInventory(*potion);
+		player.pushItem(*potion);
 		delete potion;
 		potion = nullptr;
 		return true;
@@ -34,9 +35,9 @@ bool Store::buyPotion(TextGamePlayer &player)
 
 bool Store::buyArmor(TextGamePlayer &player)
 {
-	if (player.getMoney() > cost)
+	if (player.getMoney() > cost && armor != nullptr)
 	{
-		*(player.getInventory).pushInventory(*armor);
+		player.pushItem(*armor);
 		delete armor;
 		armor = nullptr;
 		return true;
@@ -47,9 +48,10 @@ bool Store::buyArmor(TextGamePlayer &player)
 bool Store::buyWeapon(TextGamePlayer &player)
 {
 
-	if (player.getMoney() > cost)
+	if (player.getMoney() > cost && weapon != nullptr)
 	{
-		*(player.getInventory).pushInventory(*weapon);
+		player.pushItem(*weapon);
+
 		delete weapon;
 		weapon = nullptr;
 		return true;

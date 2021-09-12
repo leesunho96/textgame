@@ -1,11 +1,23 @@
 #pragma once
 #include "stdafx.h"
+#include "TextGamePlayer.h"
 #include "Inventory.h"
+#include "Item.h"
 #include "Potion.h"
 #include "Weapon.h"
 #include "Armor.h"
 #include "UI.h"
 
+
+void Inventory::inventoryApply(TextGamePlayer* player, Item* item)
+{
+	int temp;
+	UI::showInventoryWhattodo();
+	cin >> temp;
+
+
+	
+}
 
 Inventory::Inventory(int input)
 {
@@ -71,16 +83,18 @@ void Inventory::popArmorInventory(int index)
 	armorInverntory.erase(begin(armorInverntory) + index);
 }
 
-void Inventory::run()
+void Inventory::open(TextGamePlayer* player)
 {
-	system("cls");
 
+	system("cls");
 	while (true)
 	{
-		UI::showInventoryIntro;
-		int temp;
+		system("cls");
+		UI::showInventoryIntro();
+		int temp, index;
 		UI::movecursor();
 		cin >> temp;
+		system("cls");
 		if (temp == -1)
 			break;
 		switch (temp)
@@ -97,6 +111,11 @@ void Inventory::run()
 		default:
 			continue;
 		}
+		cin >> index;
+		UI::showInventoryWhattodo();
+		cin >> temp;
+
+
 	}
 }
 

@@ -3,6 +3,9 @@
 #include "TextGamePlayer.h"
 #include "TextGameInfo.h"
 #include "Inventory.h"
+#include "Weapon.h"
+#include "Armor.h"
+#include "Potion.h"
 
 void TextGamePlayer::setlocation(int input)
 {
@@ -49,95 +52,170 @@ int TextGamePlayer::getIendtity()
 	return identity;
 }
 
-Inventory& TextGamePlayer::getInventory()
+void TextGamePlayer::openInventory()
 {
-	return *playerInventory;
-	// TODO: 여기에 반환 구문을 삽입합니다.
+	playerInventory->open(this);
+}
+
+void TextGamePlayer::pushItem(Weapon input)
+{
+	playerInventory->pushInventory(input);
+}
+
+void TextGamePlayer::pushItem(Armor input)
+{
+	playerInventory->pushInventory(input);
+}
+
+void TextGamePlayer::pushItem(Potion input)
+{
+	playerInventory->pushInventory(input);
+}
+
+void TextGamePlayer::applyItem(Weapon input, int index)
+{
+	initializeAttack();
+	this->iAttack += input.getEffect();
+}
+
+void TextGamePlayer::applyItem(Potion input, int index)
+{
+	this->iHp += input.getEffect();
+	if (iHp > iMaxHP)
+	{
+		iHp = iMaxHP;
+	}
+	playerInventory->popPotionInventory(index);
+}
+
+void TextGamePlayer::applyItem(Armor input, int index)
+{
+	initializeDefense();
+	this->iDefence += input.getEffect();
+	this->iAvoidance += input.getAvoidance();
+}
+
+void TextGamePlayer::initializeAttack()
+{
+	if (sjob == "WORRIER")
+	{
+		this->iAttack = TextGameInfo::Worrier::iAttack;
+	}
+	else if (sjob == "ROGUE")
+	{
+		this->iAttack = TextGameInfo::Rogue::iAttack;
+	}
+	else
+	{
+		this->iAttack = TextGameInfo::Mage::iAttack;
+	}
+}
+
+void TextGamePlayer::initializeDefense()
+{
+	if (sjob == "WORRIER")
+	{
+		this->iDefence = TextGameInfo::Worrier::iDefence;
+		this->iAvoidance = TextGameInfo::Worrier::iavoidance;
+	}
+	else if (sjob == "ROGUE")
+	{
+		this->iDefence = TextGameInfo::Rogue::iDefence;
+		this->iAvoidance = TextGameInfo::Rogue::iavoidance;
+	}
+	else
+	{
+		this->iDefence = TextGameInfo::Mage::iDefence;
+		this->iAvoidance = TextGameInfo::Mage::iavoidance;
+	}
 }
 
 TextGamePlayer::TextGamePlayer(int i, string sname)
 {
-
-	// 캐릭터 타입을 입력받아서 해당되는 스탯으로 초기화.
-	// 플레이어일 경우 1 ~ 3, 몹일경우 4 ~ 6
-
-	switch (i)
 	{
-	case 1:
-		iHp = TextGameInfo::Worrier::iHP;
-		iMp = TextGameInfo::Worrier::iMP;
-		iAttack = TextGameInfo::Worrier::iAttack;
-		iDefence = TextGameInfo::Worrier::iDefence;
-		iAvoidance = TextGameInfo::Worrier::iavoidance;
-		sName = sname;
-		sjob = "WORRIER";
-		break;
-	case 2:
-		iHp = TextGameInfo::Rogue::iHP;
-		iMp = TextGameInfo::Rogue::iMP;
-		iAttack = TextGameInfo::Rogue::iAttack;
-		iDefence = TextGameInfo::Rogue::iDefence;
-		iAvoidance = TextGameInfo::Rogue::iavoidance;
-		sName = sname;
-		sjob = "ROGUE";
-		break;
-	case 3:
-		iHp = TextGameInfo::Mage::iHP;
-		iMp = TextGameInfo::Mage::iMP;
-		iAttack = TextGameInfo::Mage::iAttack;
-		iDefence = TextGameInfo::Mage::iDefence;
-		iAvoidance = TextGameInfo::Mage::iavoidance;
-		sName = sname;
-		sjob = "MAGE";
-		break;
 
-	case 4:
-		iHp = TextGameInfo::Ogre::iHP;
-		iMp = TextGameInfo::Ogre::iMP;
-		iAttack = TextGameInfo::Ogre::iAttack;
-		iDefence = TextGameInfo::Ogre::iDefence;
-		iAvoidance = TextGameInfo::Ogre::iavoidance;
-		sName = "OGRE";
-		sjob = "WORRIER";
-		break;
-	case 5:
-		iHp = TextGameInfo::Goblin::iHP;
-		iMp = TextGameInfo::Goblin::iMP;
-		iAttack = TextGameInfo::Goblin::iAttack;
-		iDefence = TextGameInfo::Goblin::iDefence;
-		iAvoidance = TextGameInfo::Goblin::iavoidance;
-		sName = "GOBLIN";
-		sjob = "ROGUE";
-		break;
-		break;
-	case 6:
-		iHp = TextGameInfo::Oak::iHP;
-		iMp = TextGameInfo::Oak::iMP;
-		iAttack = TextGameInfo::Oak::iAttack;
-		iDefence = TextGameInfo::Oak::iDefence;
-		iAvoidance = TextGameInfo::Oak::iavoidance;
-		sName = "OAK";
-		sjob = "MAGE";
-		break;
-		
+		// 캐릭터 타입을 입력받아서 해당되는 스탯으로 초기화.
+		// 플레이어일 경우 1 ~ 3, 몹일경우 4 ~ 6
+
+		switch (i)
+		{
+		case 1:
+			iHp = TextGameInfo::Worrier::iHP;
+			iMp = TextGameInfo::Worrier::iMP;
+			iAttack = TextGameInfo::Worrier::iAttack;
+			iDefence = TextGameInfo::Worrier::iDefence;
+			iAvoidance = TextGameInfo::Worrier::iavoidance;
+			sName = sname;
+			sjob = "WORRIER";
+			break;
+		case 2:
+			iHp = TextGameInfo::Rogue::iHP;
+			iMp = TextGameInfo::Rogue::iMP;
+			iAttack = TextGameInfo::Rogue::iAttack;
+			iDefence = TextGameInfo::Rogue::iDefence;
+			iAvoidance = TextGameInfo::Rogue::iavoidance;
+			sName = sname;
+			sjob = "ROGUE";
+			break;
+		case 3:
+			iHp = TextGameInfo::Mage::iHP;
+			iMp = TextGameInfo::Mage::iMP;
+			iAttack = TextGameInfo::Mage::iAttack;
+			iDefence = TextGameInfo::Mage::iDefence;
+			iAvoidance = TextGameInfo::Mage::iavoidance;
+			sName = sname;
+			sjob = "MAGE";
+			break;
+
+		case 4:
+			iHp = TextGameInfo::Ogre::iHP;
+			iMp = TextGameInfo::Ogre::iMP;
+			iAttack = TextGameInfo::Ogre::iAttack;
+			iDefence = TextGameInfo::Ogre::iDefence;
+			iAvoidance = TextGameInfo::Ogre::iavoidance;
+			sName = "OGRE";
+			sjob = "WORRIER";
+			break;
+		case 5:
+			iHp = TextGameInfo::Goblin::iHP;
+			iMp = TextGameInfo::Goblin::iMP;
+			iAttack = TextGameInfo::Goblin::iAttack;
+			iDefence = TextGameInfo::Goblin::iDefence;
+			iAvoidance = TextGameInfo::Goblin::iavoidance;
+			sName = "GOBLIN";
+			sjob = "ROGUE";
+			break;
+			break;
+		case 6:
+			iHp = TextGameInfo::Oak::iHP;
+			iMp = TextGameInfo::Oak::iMP;
+			iAttack = TextGameInfo::Oak::iAttack;
+			iDefence = TextGameInfo::Oak::iDefence;
+			iAvoidance = TextGameInfo::Oak::iavoidance;
+			sName = "OAK";
+			sjob = "MAGE";
+			break;
+
+		}
+
+
+		// 몹일 경우 랜덤위치로 생성, 플레이어 일 경우 0,0으로 설정
+		switch ((int)(i / 4))
+		{
+		case 0:
+			location = make_pair(0, 0);
+			identity = PLAYER;
+			break;
+		case 1:
+			location = make_pair(rand() % VERTICALSIZE, rand() % HORIZENTALSIZE);
+			identity = ENEMY;
+			break;
+		}
+
+		playerInventory = new Inventory((int)(i / 4));
+		iMaxHP = iHp;
+
 	}
-
-
-	// 몹일 경우 랜덤위치로 생성, 플레이어 일 경우 0,0으로 설정
-	switch ((int)(i / 4))
-	{
-	case 0:
-		location = make_pair(0, 0);
-		identity = PLAYER;
-		break;
-	case 1:
-		location = make_pair(rand() % VERTICALSIZE, rand() % HORIZENTALSIZE);
-		identity = ENEMY;
-		break;
-	}
-
-	playerInventory = new Inventory((int)(i / 4));
-
 
 }
 

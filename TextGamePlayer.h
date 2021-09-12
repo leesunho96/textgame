@@ -1,6 +1,13 @@
 #pragma once
 
+
+
 class Inventory;
+class TextGameInfo;
+class Weapon;
+class Armor;
+class Potion;
+
 
 class TextGamePlayer
 {
@@ -15,12 +22,14 @@ class TextGamePlayer
 	pair<int, int> location;
 	int identity;
 	Inventory *playerInventory;
-
+	void initializeAttack();
+	void initializeDefense();
+	int iMaxHP;
 
 public:
 
 	TextGamePlayer(int i, string sname);
-
+	
 	int getAttack();
 	int getHP();
 	int getMP();
@@ -34,7 +43,14 @@ public:
 	void setlocation(int input);
 	bool applydamege(int iAttack);
 	int getIendtity();
-	Inventory& getInventory();
+	void openInventory();
 
-};
 
+	void pushItem(Weapon input);
+	void pushItem(Armor input);
+	void pushItem(Potion input);
+
+	void applyItem(Weapon input, int index);
+	void applyItem(Potion input, int index);
+	void applyItem(Armor input, int index);
+};	
