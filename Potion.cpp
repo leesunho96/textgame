@@ -2,6 +2,7 @@
 #include "stdafx.h"
 #include "TextGameInfo.h"
 #include "Potion.h"
+#include "TextGamePlayer.h"
 
 Potion::Potion()
 {
@@ -29,3 +30,4 @@ bool Potion::enhance()
 {
 	return false;
 }
+

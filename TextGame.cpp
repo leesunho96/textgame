@@ -6,6 +6,7 @@
 #include "Dungeon.h"
 #include "Item.h"
 #include "Inventory.h"
+#include "Store.h";
 
 
 
@@ -48,6 +49,13 @@ void TextGame::run()
 		case 2:
 		{
 			player->openInventory();
+			break;
+		}
+		case 3:
+		{
+			Store* store = new Store();
+			store->run(*player);
+			delete store;
 			break;
 		}
 		case 4:

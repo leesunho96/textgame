@@ -2,7 +2,13 @@
 #include "stdafx.h"
 #include "Weapon.h"
 #include "TextGameInfo.h"
-#include "Item.h"
+
+class TextGameInfo;
+
+Weapon::Weapon()
+{
+	itype = 0;
+}
 
 Weapon::Weapon(int itype)
 {
@@ -10,6 +16,8 @@ Weapon::Weapon(int itype)
 	this->itype = itype;
 	switch (itype)
 	{
+	case 0:
+		break;
 	case 1:
 		this->iAttack = TextGameInfo::OneHandedSword::iAttack + rand() % 5;
 		this->iUseStamina = TextGameInfo::OneHandedSword::iUsemana - rand() % 3;
@@ -88,6 +96,8 @@ bool Weapon::enhance()
 		return false;
 	}
 }
+
+
 
 
 

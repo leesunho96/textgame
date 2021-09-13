@@ -13,6 +13,7 @@ class UI
 
 public:
 
+	static void WriteText();
 	static void movecursor();
 	static void showStartScreen();
 	static void showChooseJob();
@@ -31,6 +32,7 @@ public:
 
 	static void showInventoryIntro();
 	static void showStore(Store& store);
+
 
 };
 

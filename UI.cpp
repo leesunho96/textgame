@@ -13,6 +13,11 @@
 
 
 
+void UI::WriteText()
+{
+	gotoxy(0, 29);
+}
+
 void UI::movecursor()
 {
 	gotoxy(0, 30);
@@ -305,17 +310,25 @@ void UI::showInventoryIntro()
 
 void UI::showStore(Store & store)
 {
+	system("cls");
+	gotoxy(0, 0);
 	cout << "===========================" << endl;
 	cout << "1. 무기 : ";
-	if (store.getWeapon() != nullptr) cout << "이름 : " << store.getWeapon()->getType() << " 공격력 : " << store.getWeapon()->getEffect() << endl;
+	if (store.getWeapon() != nullptr) cout << "이름 : " << store.getWeapon()->getName() << " 공격력 : " << store.getWeapon()->getEffect() << endl;
 	else cout << "팔림";
 	cout << "2. 방어구 : ";
-	if (store.getArmor() != nullptr) cout << "이름 : " << store.getArmor()->getType() << " 공격력 : " << store.getArmor()->getEffect() << endl;
+	if (store.getArmor() != nullptr) cout << "이름 : " << store.getArmor()->getName() << " 방어력 : " << store.getArmor()->getEffect() << ", 회피력 : " << store.getArmor()->getAvoidance() << endl;
 	else cout << "팔림";
 	cout << "3. 포션 : ";
-	if (store.getPotion() != nullptr) cout << "이름 : " << store.getPotion()->getType() << " 공격력 : " << store.getPotion()->getEffect() << endl;
+	if (store.getPotion() != nullptr) cout << "이름 : " << store.getPotion()->getName() << " 회복력 : " << store.getPotion()->getEffect() << endl;
 	else cout << "팔림";
 	cout << "===========================" << endl;
+	cout << "1. 구매하기" << endl;
+	cout << "2. 판매하기" << endl;
+	cout << "3. 돌아가기" << endl;
+	cout << "===========================" << endl;
+	WriteText();
+	cout << "무엇을 할까요?" << endl;
 }
 
 

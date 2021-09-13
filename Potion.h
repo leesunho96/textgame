@@ -2,6 +2,7 @@
 #include "Item.h"
 
 class Item;
+class TextGamePlayer;
 
 class Potion : public Item
 {
@@ -14,5 +15,6 @@ public:
 	virtual int getType();
 	virtual string getName();
 	virtual bool enhance();
+
 };
 

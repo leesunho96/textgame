@@ -12,14 +12,19 @@ class Store
 	Armor* armor = nullptr;
 	Potion* potion = nullptr;
 	int cost = 100;
-public:
-	Store();
-	Store(Store& store);
 	bool buyPotion(TextGamePlayer& player);
 	bool buyArmor(TextGamePlayer& player);
 	bool buyWeapon(TextGamePlayer& player);
+
+	bool buyMode(TextGamePlayer& player);
+	bool sellMode(TextGamePlayer& player);
+public:
+	Store();
+	Store(Store& store);
 	Weapon* getWeapon();
 	Armor* getArmor();
 	Potion* getPotion();
+
+	int run(TextGamePlayer& player);
 };
 

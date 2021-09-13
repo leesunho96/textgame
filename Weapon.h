@@ -10,10 +10,12 @@ class Weapon : public Item
 
 
 public:
+	Weapon();
 	Weapon(int itype);
 	virtual string getName();
 	virtual int getType();
 	virtual int getEffect();
-	virtual bool enhance();
+	virtual bool enhance();	
+	
 };
 

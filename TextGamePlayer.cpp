@@ -74,8 +74,15 @@ void TextGamePlayer::pushItem(Potion input)
 
 void TextGamePlayer::applyItem(Weapon input, int index)
 {
+	if (applyWeapon != nullptr)
+	{
+		playerInventory->pushInventory(*applyWeapon);
+		delete applyWeapon;
+	}
 	initializeAttack();
 	this->iAttack += input.getEffect();
+	playerInventory->popWeaponInventory(index);
+	applyWeapon = new Weapon(input);
 }
 
 void TextGamePlayer::applyItem(Potion input, int index)
@@ -90,9 +97,16 @@ void TextGamePlayer::applyItem(Potion input, int index)
 
 void TextGamePlayer::applyItem(Armor input, int index)
 {
+	if (applyArmor != nullptr)
+	{
+		playerInventory->pushInventory(*applyArmor);
+		delete applyArmor;
+	}
 	initializeDefense();
 	this->iDefence += input.getEffect();
 	this->iAvoidance += input.getAvoidance();
+	playerInventory->popArmorInventory(index);
+	applyArmor = new Armor(input);
 }
 
 void TextGamePlayer::initializeAttack()

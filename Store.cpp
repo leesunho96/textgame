@@ -5,6 +5,7 @@
 #include "Weapon.h"
 #include "Armor.h"
 #include "Potion.h"
+#include "UI.h"
 
 Store::Store()
 {
@@ -59,6 +60,18 @@ bool Store::buyWeapon(TextGamePlayer &player)
 	return false;
 }
 
+bool Store::buyMode(TextGamePlayer & player)
+{
+
+	return false;
+}
+
+bool Store::sellMode(TextGamePlayer & player)
+{
+	
+	return false;
+}
+
 Weapon* Store::getWeapon()
 {
 
@@ -74,4 +87,25 @@ Armor * Store::getArmor()
 Potion * Store::getPotion()
 {
 	return potion;
+}
+
+
+
+int Store::run(TextGamePlayer & player)
+{
+	while (true)
+	{
+		UI::showStore(*this);
+		int temp;
+		cin >> temp;
+		switch (temp)
+		{
+		case 1:
+
+		case 2:
+
+		case 3:
+			return 0;
+		}
+	}
 }
