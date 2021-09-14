@@ -37,3 +37,4 @@ void setBackgroundColor();
 void setBackgroundBlack();
 void setBackgroundGreen();
 void setBackgroundGray();
+void touch();

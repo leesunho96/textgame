@@ -6,7 +6,7 @@
 #include "Dungeon.h"
 #include "Item.h"
 #include "Inventory.h"
-#include "Store.h";
+#include "Store.h"
 
 
 
@@ -15,7 +15,8 @@ void TextGame::run()
 	int temp;
 	string sinput;
 	TextGamePlayer* player = NULL;
-
+	Store* store = nullptr;
+	bool isclear = true;
 
 	UI::showStartScreen();
 	getchar();
@@ -44,6 +45,7 @@ void TextGame::run()
 		{
 			Dungeon* dungeon = new Dungeon(player);
 			(*dungeon).run();
+			isclear = true;
 			break;
 		}
 		case 2:
@@ -53,9 +55,16 @@ void TextGame::run()
 		}
 		case 3:
 		{
-			Store* store = new Store();
+			if (isclear)
+			{
+				if (store != nullptr)
+				{
+					delete store;
+				}
+				store = new Store();
+				isclear = false;
+			}
 			store->run(*player);
-			delete store;
 			break;
 		}
 		case 4:

@@ -96,15 +96,71 @@ int Store::run(TextGamePlayer & player)
 	while (true)
 	{
 		UI::showStore(*this);
+		UI::WriteText();
+		cout << "무엇을 할까요? " << endl;
 		int temp;
 		cin >> temp;
 		switch (temp)
 		{
 		case 1:
-
+			UI::WriteText();
+			cout << "무엇을 살까요?" << endl;
+			UI::movecursor();
+			cout << "                   ";
+			UI::movecursor();
+			int temp2;
+			cin >> temp2;
+			if (temp2 == 1)
+				buyWeapon(player);
+			else if (temp2 == 2)
+				buyArmor(player);
+			else if (temp2 = 3)
+				buyPotion(player);
+			else
+				continue;
+			break;
 		case 2:
+			system("cls");
+			UI::showInventoryIntro();
+			cin >> temp;
+			if (temp == 1)
+			{
+				player.showWeaponInventory();
+			}
+			else if (temp == 2)
+			{
+				player.showArmorInventory();
+			}
+			else if (temp = 3)
+			{
+				player.showPotionInventory();
+			}
+			else
+				continue;
 
+			UI::WriteText();
+			cout << "어떤 아이템을 팔까요?" << endl;
+			int index;
+			cin >> index;
+
+			if (temp == 1)
+			{
+				player.showWeaponInventory();
+			}
+			else if (temp == 2)
+			{
+				player.showArmorInventory();
+			}
+			else if (temp = 3)
+			{
+				player.showPotionInventory();
+			}
+			else
+				continue;
+			break;
 		case 3:
+			return 0;
+		default:
 			return 0;
 		}
 	}

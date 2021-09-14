@@ -27,5 +27,7 @@ public:
 
 	void open(TextGamePlayer* player);
 
-
+	void showWeaponInventory();
+	void showArmorInventory();
+	void showPotionInventory();
 };

@@ -34,3 +34,9 @@ void setBackgroundGray()
 {
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), BACKGROUND_INTENSITY);
 }
+
+void touch()
+{
+	getch();
+
+}

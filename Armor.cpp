@@ -20,6 +20,10 @@ Armor::Armor(int i)
 	{
 		i == 1 ? this->iArmorDefense = TextGameInfo::LightArmor::iArmorDefence + rand() % 5 : this->iArmorDefense = TextGameInfo::HeavyArmor::iArmorDefence + rand() % 5;
 		i == 1 ? this->iAvoidance = TextGameInfo::LightArmor::iAvoidance : this->iAvoidance = TextGameInfo::HeavyArmor::iavoidance;
+		if (itype == 1)
+			this->sName = "LightArmor";
+		else
+			this->sName = "HeavyArmor";
 	}
 }
 

@@ -16,22 +16,23 @@ class TextGamePlayer
 	int iDefence;
 	string sName;
 	string sjob;
-	int iMoney = 0;
+	int iMoney = 500;
 	pair<int, int> location;
 	int identity;
 	Inventory *playerInventory;
 	int iMaxHP;
-
 	Weapon *applyWeapon = nullptr;
 	Armor *applyArmor = nullptr;
-
+	static vector<pair<int, int>> enemylocationlist;
 	void initializeAttack();
 	void initializeDefense();
-
+	
+	
 
 public:
 
 	TextGamePlayer(int i, string sname);
+	TextGamePlayer(int i, string sname, pair<int, int>location);
 	
 	
 	int getAttack();
@@ -49,6 +50,9 @@ public:
 	int getIendtity();
 	void openInventory();
 
+	void showWeaponInventory();
+	void showArmorInventory();
+	void showPotionInventory();
 
 	void pushItem(Weapon input);
 	void pushItem(Armor input);

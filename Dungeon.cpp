@@ -108,8 +108,10 @@ bool Dungeon::turn(int index)
 	if (temp)
 	{
 		gotoxy(0, 0);
-		cout << "플레이어의 공격" << endl;
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 
+			FOREGROUND_BLUE | FOREGROUND_GREEN | FOREGROUND_RED | FOREGROUND_INTENSITY);
 
+		getch();
 		int result = moveIcon();
 		if (result < 30 || result > 70)
 		{
@@ -120,6 +122,8 @@ bool Dungeon::turn(int index)
 			result = 2;
 		}
 
+
+		cout << "플레이어의 공격" << endl;
 		switch (result)
 		{
 		case 1:
@@ -167,7 +171,7 @@ void Dungeon::battle(int index)
 {
 	system("cls");
 
-	while (player->getHP() >= 0 && EnemyVector[index].getHP() >= 0)
+	while (player->getHP() > 0 && EnemyVector[index].getHP() > 0)
 	{
 		turn(index);
 	}
@@ -229,9 +233,37 @@ int Dungeon::moveIcon()
 
 Dungeon::Dungeon(TextGamePlayer *player)
 {
+	srand(time(NULL));
 	TextGamePlayer *tEnemy = NULL;
 	srand(time(NULL));
 	this->player = player;
+
+	vector<pair<int, int>> enemylocationlist;
+	bool ispossible = true;
+	while (enemylocationlist.size() != 5)
+	{
+		pair<int, int> temp = make_pair(rand() % VERTICALSIZE, rand() % HORIZENTALSIZE);
+		for (int i = 0; i < enemylocationlist.size(); i++)
+		{
+			if (enemylocationlist[i] == temp)
+			{
+				ispossible = false;
+				break;
+			}
+		}
+
+		if (ispossible)
+		{
+			enemylocationlist.push_back(temp);
+
+		}
+		else
+		{
+			ispossible = true;
+		}
+	}
+
+
 
 	// 던전에 등장할 몹 초기화.
 	for (size_t i = 0; i < 5; i++)
@@ -241,15 +273,15 @@ Dungeon::Dungeon(TextGamePlayer *player)
 		switch (itemp)
 		{
 		case 4:
-			tEnemy = new TextGamePlayer(itemp, "Ogre");
+			tEnemy = new TextGamePlayer(itemp, "Ogre", enemylocationlist[i]);
 			EnemyVector.push_back(*tEnemy);
 			break;
 		case 5:
-			tEnemy = new TextGamePlayer(itemp, "Goblin");
+			tEnemy = new TextGamePlayer(itemp, "Goblin", enemylocationlist[i]);
 			EnemyVector.push_back(*tEnemy);
 			break;
 		case 6:
-			tEnemy = new TextGamePlayer(itemp, "Oak");
+			tEnemy = new TextGamePlayer(itemp, "Oak", enemylocationlist[i]);
 			EnemyVector.push_back(*tEnemy);
 			break;
 		}
@@ -294,6 +326,8 @@ void Dungeon::run()
 		invalidate();
 		UI::showDungeonMap();
 		UI::showStatus(*player);
+
+
 		fflush(stdin);
 		temp = getch();
 		if (temp == 224)
@@ -306,7 +340,7 @@ void Dungeon::run()
 			if (move(temp))
 			{
 				battle(findEnemy(playerlocaiton));
-				if (player->getHP() <= 0)
+  				if (player->getHP() <= 0)
 				{
 					gotoxy(0, 0);
 					cout << "당신은 죽었습니다." << endl;

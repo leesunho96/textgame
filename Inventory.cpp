@@ -70,17 +70,17 @@ void Inventory::pushInventory(Armor & push)
 
 void Inventory::popPotionInventory(int index)
 {
-	potionInventory.erase(begin(potionInventory) + index);
+	potionInventory.erase(begin(potionInventory) + index - 1);
 }
 
 void Inventory::popWeaponInventory(int index)
 {
-	weaponInventory.erase(begin(weaponInventory) + index);
+	weaponInventory.erase(begin(weaponInventory) + index - 1);
 }
 
 void Inventory::popArmorInventory(int index)
 {
-	armorInverntory.erase(begin(armorInverntory) + index);
+	armorInverntory.erase(begin(armorInverntory) + index - 1);
 }
 
 void Inventory::open(TextGamePlayer* player)
@@ -92,6 +92,7 @@ void Inventory::open(TextGamePlayer* player)
 		system("cls");
 		UI::showInventoryIntro();
 		int temp, index;
+		int invensize;
 		UI::movecursor();
 		cin >> temp;
 		system("cls");
@@ -101,22 +102,73 @@ void Inventory::open(TextGamePlayer* player)
 		{
 		case 1:
 			UI::showInventory(weaponInventory);
+			invensize = weaponInventory.size();
 			break;
 		case 2:
 			UI::showInventory(armorInverntory);
+			invensize = armorInverntory.size();
 			break;
 		case 3:
 			UI::showInventory(potionInventory);
+			invensize = potionInventory.size();
 			break;
 		default:
 			continue;
 		}
 		cin >> index;
+		if (index <= 0 || index > invensize)
+			continue;
 		UI::showInventoryWhattodo();
-		cin >> temp;
+		int choice;
+		cin >> choice;
+		// temp = inven 선택, index : 해당 인벤에서의 index, choice = 사용/파기/돌아가기
+		if (temp == 1)
+		{
+			if (choice == 1)
+				player->applyItem(weaponInventory[index - 1], index);
+			else if (choice == 2)
+				popWeaponInventory(index);
+			else
+				continue;
+		}
+		else if (temp == 2)
+		{
+			if (choice == 1)
+				player->applyItem(armorInverntory[index - 1], index);
+			else if (choice == 2)
+				popArmorInventory(index);
+			else
+				continue;
+		}
+		else if (temp == 3)
+		{
+			if (choice == 1)
+				player->applyItem(potionInventory[index - 1], index);
+			else if (choice == 2)
+				popPotionInventory(index);
+			else
+				continue;
+		}
 
+
+		
 
 	}
+}
+
+void Inventory::showWeaponInventory()
+{
+	UI::showInventory(weaponInventory);
+}
+
+void Inventory::showArmorInventory()
+{
+	UI::showInventory(armorInverntory);
+}
+
+void Inventory::showPotionInventory()
+{
+	UI::showInventory(potionInventory);
 }
 
 
