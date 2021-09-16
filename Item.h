@@ -1,6 +1,7 @@
 #pragma once
 class Item
 {
+
 public:
 	virtual string getName() = 0;
 	virtual int getType() = 0;

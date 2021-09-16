@@ -44,6 +44,8 @@ string Armor::getName()
 
 bool Armor::enhance()
 {
+	srand(time(NULL));
+
 	if ((rand() % 100) > 30)
 	{
 		iArmorDefense += rand() % 4 + 1;

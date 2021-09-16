@@ -101,16 +101,13 @@ bool Dungeon::available(int ichoice)
 bool Dungeon::turn(int index)
 {
 	static bool temp = true;
-	system("cls");
+	//system("cls");
 	UI::showStatus(*player);
 	UI::showStatus(EnemyVector.at(index));
 	getch();
 	if (temp)
 	{
 		gotoxy(0, 0);
-		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 
-			FOREGROUND_BLUE | FOREGROUND_GREEN | FOREGROUND_RED | FOREGROUND_INTENSITY);
-
 		getch();
 		int result = moveIcon();
 		if (result < 30 || result > 70)
@@ -121,9 +118,9 @@ bool Dungeon::turn(int index)
 		{
 			result = 2;
 		}
-
-
-		cout << "플레이어의 공격" << endl;
+		textcolor(15);
+		gotoxy(0, 0);
+		cout << "플레이어의 공격                      " << endl;
 		switch (result)
 		{
 		case 1:
@@ -138,7 +135,7 @@ bool Dungeon::turn(int index)
 	else
 	{
 		gotoxy(0, 0);
-		cout << EnemyVector[index].getName() << "의 공격" << endl;
+		cout << EnemyVector[index].getName() << "의 공격                 " << endl;
 		getch();
 		int result = rand() % 101;
 
@@ -190,6 +187,7 @@ int Dungeon::findEnemy(pair<int, int> Enemylocation)
 			return i;
 	}
 }
+
 
 int Dungeon::moveIcon()
 {
@@ -312,6 +310,7 @@ Dungeon::Dungeon(TextGamePlayer *player)
 
 void Dungeon::run()
 {
+	srand(time(NULL));
 	// 화면 초기화.
 	system("cls");
 
@@ -334,6 +333,11 @@ void Dungeon::run()
 		{
 			temp = getch();
 		}
+		if (temp == 'i')
+		{
+			player->openInventory();
+			continue;
+		}
 
 		if (available(temp))
 		{
@@ -345,6 +349,16 @@ void Dungeon::run()
 					gotoxy(0, 0);
 					cout << "당신은 죽었습니다." << endl;
 					exit(0);
+				}
+				else
+				{
+					system("cls");
+					gotoxy(0, 0);
+					cout << "당신이 승리 하셨습니다." << endl;
+					if (rand() % 100 > 80)
+					{
+						
+					}
 				}
 			}
 			maparr[playerlocaiton.first][playerlocaiton.second] = PLAYER;

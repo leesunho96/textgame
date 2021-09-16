@@ -163,6 +163,10 @@ void UI::showDungeonMap()
 	cout << "¡á" ;
 	gotoxy(26, 20);
 	cout << "¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á" << endl;
+	gotoxy(0, 21);
+	cout << "Press Space bar While green bar is in Right Place" << endl;
+	cout << "move with Directional Key" << endl;
+	cout << "Press \"I\" if you want to open Inventory" << endl;
 	movecursor();
 }
 

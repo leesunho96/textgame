@@ -62,4 +62,10 @@ public:
 	void applyItem(Potion input, int index);
 	void applyItem(Armor input, int index);
 
+	Armor getArmor(int index);
+	Weapon getWeapon(int index);
+	Potion getPotion(int index);
+
+
+	void getItem();
 };	

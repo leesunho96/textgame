@@ -83,6 +83,21 @@ void Inventory::popArmorInventory(int index)
 	armorInverntory.erase(begin(armorInverntory) + index - 1);
 }
 
+Potion Inventory::getPotion(int index)
+{
+	return potionInventory.at(index - 1);
+}
+
+Weapon Inventory::getWeapon(int index)
+{
+	return weaponInventory.at(index - 1);
+}
+
+Armor Inventory::getArmor(int index)
+{
+	return armorInverntory.at(index - 1);
+}
+
 void Inventory::open(TextGamePlayer* player)
 {
 

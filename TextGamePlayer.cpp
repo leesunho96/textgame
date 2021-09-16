@@ -31,14 +31,11 @@ void TextGamePlayer::setlocation(int input)
 
 bool TextGamePlayer::applydamege(int iAttack)
 {
-
-	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),
-		FOREGROUND_BLUE | FOREGROUND_GREEN | FOREGROUND_RED | FOREGROUND_INTENSITY);
-	gotoxy(0, 1);
+   	gotoxy(0, 1);
 	srand(time(NULL));
 	if (rand() % 10 < iAvoidance)
 	{
-		cout << sName << "은 회피하였습니다." << endl;
+		cout << sName << "은 회피하였습니다.                                   " << endl;
 		getch();
 		return false;
 	}
@@ -48,7 +45,7 @@ bool TextGamePlayer::applydamege(int iAttack)
 		if (applydamage < 0)
 			applydamage = 0;
 		iHp = iHp - applydamage;
-		cout << sName << "은 " << applydamage << "의 피해를 입었습니다." << endl;
+		cout << sName << "은 " << applydamage << "의 피해를 입었습니다.                       " << endl;
 		getch();
 		return true;
 	}
@@ -131,6 +128,71 @@ void TextGamePlayer::applyItem(Armor input, int index)
 	this->iAvoidance += input.getAvoidance();
 	playerInventory->popArmorInventory(index);
 	applyArmor = new Armor(input);
+}
+
+Armor TextGamePlayer::getArmor(int index)
+{
+	Armor temp = this->playerInventory->getArmor(index);
+	playerInventory->popArmorInventory(index);
+	return temp;
+}
+
+Weapon TextGamePlayer::getWeapon(int index)
+{
+	Weapon temp = playerInventory->getWeapon(index);
+	playerInventory->popWeaponInventory(index);
+	return temp;
+}
+
+Potion TextGamePlayer::getPotion(int index)
+{
+	Potion temp = playerInventory->getPotion(index);
+	playerInventory->popPotionInventory(index);
+	return temp;
+}
+
+void TextGamePlayer::getItem()
+{
+	srand(time(NULL));
+	int temp = rand() % 9 + 1;
+	switch (temp)
+	{
+	case 1:
+	case 2:
+	case 3:
+	case 4:
+	case 5:
+	case 6:
+	//// 여기까지 무기 획득
+	{
+		Weapon weapon(temp);
+		this->pushItem(weapon); 
+		cout << "이름 : " << weapon.getName() << endl;
+		cout << "공격력 : " << weapon.getEffect() << endl;
+		break;
+	}
+	case 7:
+		// 포션 획득
+	{
+		Potion potion;
+		this->pushItem(potion);
+		cout << "이름 : " << potion.getName() << endl;
+		cout << "회복량 : " << potion.getEffect() << endl;
+		break;
+	}
+	case 8:
+	case 9:
+	{
+		Armor armor(temp - 7);
+		this->pushItem(armor);
+		cout << "이름 : " << armor.getName() << endl;
+		cout << "방어력 : " << armor.getEffect() << endl;
+		break;
+	}
+		// 방어구 획득
+	}
+	fflush(stdin);
+	_getch();
 }
 
 void TextGamePlayer::initializeAttack()

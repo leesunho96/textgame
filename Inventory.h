@@ -25,6 +25,11 @@ public:
 	void popWeaponInventory(int index);
 	void popArmorInventory(int index);
 
+	Potion getPotion(int index);
+	Weapon getWeapon(int index);
+	Armor getArmor(int index);
+
+
 	void open(TextGamePlayer* player);
 
 	void showWeaponInventory();
