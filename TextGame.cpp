@@ -7,6 +7,7 @@
 #include "Item.h"
 #include "Inventory.h"
 #include "Store.h"
+#include "Smithy.h"
 
 
 
@@ -69,8 +70,11 @@ void TextGame::run()
 		}
 		case 4:
 		{
-			exit(0);
+			Smithy smithy;
+			smithy.run(*player);
 		}
+		case 5:
+			exit(0);
 		}
 
 	}

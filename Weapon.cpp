@@ -52,6 +52,7 @@ Weapon::Weapon(int itype)
 		cout << "裹困 观狼 公扁 积己" << endl;
 		exit(1);
 	}
+	this->iWeight = 0;
 }
 
 
@@ -95,6 +96,11 @@ bool Weapon::enhance()
 	{
 		return false;
 	}
+}
+
+int Weapon::getWeight()
+{
+	return iWeight;
 }
 
 

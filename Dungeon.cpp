@@ -172,7 +172,6 @@ void Dungeon::battle(int index)
 	{
 		turn(index);
 	}
-
 	EnemyVector.erase(begin(EnemyVector) + index);
 
 	system("cls");

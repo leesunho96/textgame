@@ -14,9 +14,6 @@ void Inventory::inventoryApply(TextGamePlayer* player, Item* item)
 	int temp;
 	UI::showInventoryWhattodo();
 	cin >> temp;
-
-
-	
 }
 
 Inventory::Inventory(int input)
@@ -28,6 +25,14 @@ Inventory::Inventory(int input)
 		{
 			potionInventory.push_back(*(new Potion()));
 		}
+
+		weaponInventory.push_back(*(new Weapon(rand() % 6 + 1)));
+		weaponInventory.push_back(*(new Weapon(rand() % 6 + 1)));
+		armorInverntory.push_back(*(new Armor(rand() % 2 + 1)));
+		armorInverntory.push_back(*(new Armor(rand() % 2 + 1)));
+
+
+
 		break;
 	case 1:
 		int input = rand() % 9;

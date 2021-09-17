@@ -78,6 +78,7 @@ public:
 		const static int iAttack = 5;
 		const static int iUseStamina = 5;
 		const static int iUsemana = 1;
+		const static int iWeight = 3;
 	};
 
 	class TwoHandedSword {
@@ -86,6 +87,7 @@ public:
 		const static int iAttack = 10;
 		const static int iUseStamina = 10;
 		const static int iUsemana = 2;
+		const static int iWeight = 5;
 	};
 
 	class ShortSword {
@@ -94,6 +96,7 @@ public:
 		const static int iAttack = 10;
 		const static int iUseStamina = 15;
 		const static int iUsemana = 1;
+		const static int iWeight = 2;
 	};
 
 	class Niddle {
@@ -102,6 +105,7 @@ public:
 		const static int iAttack = 13;
 		const static int iUseStamina = 13;
 		const static int iUsemana = 2;
+		const static int iWeight = 1;
 	};
 
 
@@ -111,6 +115,7 @@ public:
 		const static int iAttack = 15;
 		const static int iUseStamina = 10;
 		const static int iUsemana = 15;
+		const static int iWeight = 3;
 	};
 
 	class Wand {
@@ -119,6 +124,7 @@ public:
 		const static int iAttack = 20;
 		const static int iUseStamina = 20;
 		const static int iUsemana = 20;
+		const static int iWeight = 1;
 	};
 
 
@@ -138,6 +144,7 @@ public:
 		const static int itype = 1;
 		const static int iArmorDefence = 5;
 		const static int iAvoidance = 3;
+		const static int iWeight = 3;
 	};
 
 	class HeavyArmor
@@ -146,6 +153,7 @@ public:
 		const static int itype = 2;
 		const static int iArmorDefence = 10;
 		const static int iavoidance = 1;
+		const static int iWeight = 5;
 	};
 	
 };

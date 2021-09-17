@@ -56,6 +56,8 @@ void UI::showStatus(TextGamePlayer &p)
 		gotoxy(80, 28);
 		cout << "Defence : " << p.getDefence() << endl;
 		gotoxy(80, 29);
+		cout << "Weight : " << p.getWeight();
+		gotoxy(80, 30);
 		cout << "==========================" << endl;
 		movecursor();
 	}
@@ -76,6 +78,8 @@ void UI::showStatus(TextGamePlayer &p)
 		gotoxy(0, 28);
 		cout << "Defence : " << p.getDefence() << endl;
 		gotoxy(0, 29);
+		cout << "Weight : " << p.getWeight();
+		gotoxy(0, 30);
 		cout << "==========================" << endl;
 		movecursor();
 	}
@@ -92,6 +96,8 @@ void UI::showWhattodo()
 	gotoxy(50, 13);
 	cout << "3. Go to Store" << endl;
 	gotoxy(50, 14);
+	cout << "4. GO to Smithy" << endl;
+	gotoxy(50, 15);
 	cout << "4. Exit Game" << endl;
 	movecursor();
 

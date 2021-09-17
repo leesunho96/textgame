@@ -20,6 +20,7 @@ Armor::Armor(int i)
 	{
 		i == 1 ? this->iArmorDefense = TextGameInfo::LightArmor::iArmorDefence + rand() % 5 : this->iArmorDefense = TextGameInfo::HeavyArmor::iArmorDefence + rand() % 5;
 		i == 1 ? this->iAvoidance = TextGameInfo::LightArmor::iAvoidance : this->iAvoidance = TextGameInfo::HeavyArmor::iavoidance;
+		i == 1 ? this->iWeight = TextGameInfo::LightArmor::iWeight : this->iWeight = TextGameInfo::HeavyArmor::iWeight;
 		if (itype == 1)
 			this->sName = "LightArmor";
 		else
@@ -55,6 +56,11 @@ bool Armor::enhance()
 	{
 		return false;
 	}
+}
+
+int Armor::getWeight()
+{
+	return iWeight;
 }
 
 int Armor::getAvoidance()

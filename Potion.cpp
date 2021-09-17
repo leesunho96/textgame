@@ -31,3 +31,8 @@ bool Potion::enhance()
 	return false;
 }
 
+int Potion::getWeight()
+{
+	return 0;
+}
+

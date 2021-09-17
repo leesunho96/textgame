@@ -15,6 +15,7 @@ public:
 	virtual int getType();
 	virtual string getName();
 	virtual bool enhance();
+	virtual int getWeight();
 
 };
 

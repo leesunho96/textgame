@@ -7,6 +7,7 @@ class Armor : public Item
 	int iAvoidance;
 	int itype;
 	string sName;
+	int iWeight;
 
 
 public:
@@ -16,6 +17,7 @@ public:
 	virtual int getType();
 	virtual string getName();
 	virtual bool enhance();
+	virtual int getWeight();
 
 
 	int getAvoidance();

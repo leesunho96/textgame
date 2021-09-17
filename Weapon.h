@@ -7,7 +7,7 @@ class Weapon : public Item
 	int iAttack;
 	int iUseStamina;
 	int iUseMana;
-
+	int iWeight;
 
 public:
 	Weapon();
@@ -16,6 +16,7 @@ public:
 	virtual int getType();
 	virtual int getEffect();
 	virtual bool enhance();	
+	virtual int getWeight();
 	
 };
 

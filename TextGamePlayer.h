@@ -14,6 +14,7 @@ class TextGamePlayer
 	int iMp;
 	int iAvoidance;
 	int iDefence;
+	int iWeight;
 	string sName;
 	string sjob;
 	int iMoney = 500;
@@ -66,6 +67,7 @@ public:
 	Weapon getWeapon(int index);
 	Potion getPotion(int index);
 
+	int getWeight();
 
 	void getItem();
 };	

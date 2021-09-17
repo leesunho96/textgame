@@ -95,12 +95,14 @@ void TextGamePlayer::applyItem(Weapon input, int index)
 {
 	if (applyWeapon != nullptr)
 	{
+		iWeight -= applyWeapon->getWeight();
 		playerInventory->pushInventory(*applyWeapon);
 		delete applyWeapon;
 		applyWeapon = nullptr;
 	}
 	initializeAttack();
 	this->iAttack += input.getEffect();
+	this->iWeight += input.getWeight();
 	playerInventory->popWeaponInventory(index);
 	applyWeapon = new Weapon(input);
 }
@@ -119,6 +121,7 @@ void TextGamePlayer::applyItem(Armor input, int index)
 {
 	if (applyArmor != nullptr)
 	{
+		iWeight -= applyArmor->getWeight();
 		playerInventory->pushInventory(*applyArmor);
 		delete applyArmor;
 		applyArmor = nullptr;
@@ -126,6 +129,7 @@ void TextGamePlayer::applyItem(Armor input, int index)
 	initializeDefense();
 	this->iDefence += input.getEffect();
 	this->iAvoidance += input.getAvoidance();
+	this->iWeight += input.getWeight();
 	playerInventory->popArmorInventory(index);
 	applyArmor = new Armor(input);
 }
@@ -149,6 +153,11 @@ Potion TextGamePlayer::getPotion(int index)
 	Potion temp = playerInventory->getPotion(index);
 	playerInventory->popPotionInventory(index);
 	return temp;
+}
+
+int TextGamePlayer::getWeight()
+{
+	return iWeight;
 }
 
 void TextGamePlayer::getItem()
@@ -317,7 +326,7 @@ TextGamePlayer::TextGamePlayer(int i, string sname)
 		iMaxHP = iHp;
 
 	}
-
+	iWeight = 0;
 }
 
 TextGamePlayer::TextGamePlayer(int i, string sname, pair<int, int> location)
@@ -405,6 +414,7 @@ TextGamePlayer::TextGamePlayer(int i, string sname, pair<int, int> location)
 		iMaxHP = iHp;
 
 	}
+	iWeight = 0;
 }
 
 int TextGamePlayer::getAttack()
