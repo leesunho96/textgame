@@ -3,6 +3,8 @@
 #include "Dungeon.h"
 #include "UI.h"
 #include "TextGamePlayer.h"
+#include "Weapon.h"
+#include "Armor.h"
 #include <conio.h>
 
 void Dungeon::invalidate()
@@ -102,7 +104,11 @@ bool Dungeon::available(int ichoice)
 
 bool Dungeon::playerTurn(int index)
 {
+	textcolor(15);
 	gotoxy(0, 0);
+	cout << "플레이어의 공격                      " << endl;
+	cout << "                                    " << endl;
+	gotoxy(0, 1);
 	getch();
 	int result = moveIcon();
 	if (result < 30 || result > 70)
@@ -113,9 +119,6 @@ bool Dungeon::playerTurn(int index)
 	{
 		result = 2;
 	}
-	textcolor(15);
-	gotoxy(0, 0);
-	cout << "플레이어의 공격                      " << endl;
 	switch (result)
 	{
 	case 1:
@@ -156,6 +159,39 @@ bool Dungeon::EnemyTurn(int index)
 	return false;
 }
 
+int Dungeon::getItem()
+{
+	srand(time(NULL));
+	// get item or Get Money.
+	if (rand() % 100 > 50)
+	{
+		// get Item
+		if (rand() % 100 > 80)
+		{
+			//get Weapon
+			if (rand() % 2 == 1)
+			{
+				player->pushItem(Weapon(rand() % 5 + 1));
+				return 1;
+			}
+			//get Armor
+			else
+			{
+				player->pushItem(Armor(rand() % 2 + 1));
+				return 2;
+			}
+		}
+		// get Money from 50 to 150
+		else
+		{
+			player->pushMoney(rand() % 100 + 50);
+			return 3;
+		}
+
+	}
+	return 0;
+}
+
 void Dungeon::battle(int index)
 {
 	system("cls");
@@ -165,7 +201,6 @@ void Dungeon::battle(int index)
 	{
 		UI::showStatus(*player);
 		UI::showStatus(EnemyVector.at(index));
-		getch();
 		if (isfast)
 		{
 			playerTurn(index);
@@ -176,6 +211,7 @@ void Dungeon::battle(int index)
 			EnemyTurn(index);
 			isfast = true;
 		}
+		Sleep(1000);
 	}
 	EnemyVector.erase(begin(EnemyVector) + index);
 
@@ -198,6 +234,9 @@ int Dungeon::moveIcon()
 	int i = 1;
 	bool isfront = true;
 	UI::showBattle();
+	
+	cin.clear();
+	_getch();
 	while (!_kbhit())
 	{
 		setBackgroundColor();
@@ -331,7 +370,7 @@ void Dungeon::run()
 		UI::showStatus(*player);
 
 
-		fflush(stdin);
+
 		temp = getch();
 		if (temp == 224)
 		{
@@ -359,10 +398,24 @@ void Dungeon::run()
 					system("cls");
 					gotoxy(0, 0);
 					cout << "당신이 승리 하셨습니다." << endl;
-					if (rand() % 100 > 80)
+					switch (getItem())
 					{
-						
+					case 0:
+						cout << "아무것도 획득하지 못했습니다." << endl;
+						break;
+					case 1:
+						cout << "무기를 획득하였습니다." << endl;
+						break;
+					case 2:
+						cout << "방어구를 획득하였습니다." << endl;
+						break;
+					case 3:
+						cout << "돈을 획득하였습니다." << endl;
+						break;
 					}
+					
+					_getch();
+
 				}
 			}
 			maparr[playerlocaiton.first][playerlocaiton.second] = PLAYER;

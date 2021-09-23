@@ -48,9 +48,9 @@ void UI::showStatus(TextGamePlayer &p)
 		gotoxy(80, 24);
 		cout << "Job :" << p.getJob() << endl;
 		gotoxy(80, 25);
-		cout << "HP : " << p.getHP() << endl;
+		cout << "HP : " << p.getHP() << "     " << endl;
 		gotoxy(80, 26);
-		cout << "MP : " << p.getMP() << endl;
+		cout << "MP : " << p.getMP() << "   " << endl;
 		gotoxy(80, 27);
 		cout << "Attack : " << p.getAttack() << endl;
 		gotoxy(80, 28);

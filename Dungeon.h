@@ -13,7 +13,7 @@ class Dungeon
 	bool available(int ichoice);
 	bool playerTurn(int index);
 	bool EnemyTurn(int index);
-
+	int getItem();
 
 	void battle(int index);
 	int findEnemy(pair<int, int> Enemylocation);

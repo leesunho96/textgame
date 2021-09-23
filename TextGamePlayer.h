@@ -58,6 +58,7 @@ public:
 	void pushItem(Weapon input);
 	void pushItem(Armor input);
 	void pushItem(Potion input);
+	void pushMoney(int input);
 
 	void applyItem(Weapon input, int index);
 	void applyItem(Potion input, int index);

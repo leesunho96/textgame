@@ -36,7 +36,6 @@ bool TextGamePlayer::applydamege(int iAttack)
 	if (rand() % 10 < iAvoidance)
 	{
 		cout << sName << "은 회피하였습니다.                                   " << endl;
-		getch();
 		return false;
 	}
 	else
@@ -46,7 +45,6 @@ bool TextGamePlayer::applydamege(int iAttack)
 			applydamage = 0;
 		iHp = iHp - applydamage;
 		cout << sName << "은 " << applydamage << "의 피해를 입었습니다.                       " << endl;
-		getch();
 		return true;
 	}
 }
@@ -89,6 +87,11 @@ void TextGamePlayer::pushItem(Armor input)
 void TextGamePlayer::pushItem(Potion input)
 {
 	playerInventory->pushInventory(input);
+}
+
+void TextGamePlayer::pushMoney(int input)
+{
+	iMoney += input;
 }
 
 void TextGamePlayer::applyItem(Weapon input, int index)
