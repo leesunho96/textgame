@@ -72,6 +72,7 @@ void TextGame::run()
 		{
 			Smithy smithy;
 			smithy.run(*player);
+			break;
 		}
 		case 5:
 			exit(0);

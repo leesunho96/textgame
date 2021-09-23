@@ -23,25 +23,25 @@ Smithy::~Smithy()
 }
 
 void Smithy::run(TextGamePlayer & player)
-{
-	system("cls");
+{	
 	// 강화할 종류
 	while (true)
 	{
+		system("cls");
 		UI::showInventoryIntro();
 		int temp;
-		try {
-			cin >> temp;
-			if (temp < 1 || temp > 3)
-			{
-				throw temp;
-			}
+
+		cin >> temp;
+		if (temp == -1)
+		{
+			break;
 		}
-		catch (int excp)
+		if (temp < 1 || temp > 3)
 		{
 			cout << "범위 내의 수를 입력해주세요." << endl;
 			continue;
 		}
+
 		switch (temp)
 		{
 		case 1:
@@ -54,24 +54,13 @@ void Smithy::run(TextGamePlayer & player)
 			player.showPotionInventory();
 			break;
 		default:
-			return;
+			continue;
 		}
 
 		int index;
+		cin >> index;
 
-		try {
-			cin >> index;
-			if (temp < 1 || temp > 3)
-			{
-				throw index;
-			}
-		}
-		catch (int excp)
-		{
-			cout << "범위 내의 수를 입력해주세요." << endl;
-			continue;
-		}
-		switch (index)
+		switch (temp)
 		{
 		case 1:
 			enhance_item = new Weapon(player.getWeapon(index));
@@ -85,6 +74,7 @@ void Smithy::run(TextGamePlayer & player)
 		default:
 			return;
 		}
+
 		switch (temp)
 		{
 		case 1:
@@ -146,8 +136,7 @@ void Smithy::run(TextGamePlayer & player)
 			cout << "강화를 실패했습니다" << endl;
 		}
 
-
-		_kbhit();
 		fflush(stdin);
+		_getch();
 	}
 }

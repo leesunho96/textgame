@@ -98,6 +98,7 @@ void TextGamePlayer::applyItem(Weapon input, int index)
 {
 	if (applyWeapon != nullptr)
 	{
+		
 		iWeight -= applyWeapon->getWeight();
 		playerInventory->pushInventory(*applyWeapon);
 		delete applyWeapon;

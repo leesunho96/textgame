@@ -1,34 +1,96 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClInclude Include="stdafx.h" />
-    <ClInclude Include="UI.h" />
-    <ClInclude Include="TextGame.h" />
-    <ClInclude Include="TextGamePlayer.h" />
-    <ClInclude Include="TextGameInfo.h" />
-    <ClInclude Include="Inventory.h" />
-    <ClInclude Include="Weapon.h" />
-    <ClInclude Include="Armor.h" />
-    <ClInclude Include="Potion.h" />
-    <ClInclude Include="Dungeon.h" />
-    <ClInclude Include="Item.h" />
-    <ClInclude Include="Store.h" />
-    <ClInclude Include="Smithy.h" />
+    <ClInclude Include="Armor.h">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="Inventory.h">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="Dungeon.h">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="Potion.h">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="Smithy.h">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="Store.h">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="TextGame.h">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="TextGameInfo.h">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="TextGamePlayer.h">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="UI.h">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="Weapon.h">
+      <Filter>header</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="stdafx.cpp" />
-    <ClCompile Include="classMain.cpp" />
-    <ClCompile Include="UI.cpp" />
-    <ClCompile Include="TextGame.cpp" />
-    <ClCompile Include="TextGamePlayer.cpp" />
-    <ClCompile Include="TextGameInfo.cpp" />
-    <ClCompile Include="Inventory.cpp" />
-    <ClCompile Include="Weapon.cpp" />
-    <ClCompile Include="Armor.cpp" />
-    <ClCompile Include="Potion.cpp" />
-    <ClCompile Include="Dungeon.cpp" />
-    <ClCompile Include="Item.cpp" />
-    <ClCompile Include="Store.cpp" />
-    <ClCompile Include="Smithy.cpp" />
+    <ClCompile Include="Weapon.cpp">
+      <Filter>cppfile</Filter>
+    </ClCompile>
+    <ClCompile Include="Armor.cpp">
+      <Filter>cppfile</Filter>
+    </ClCompile>
+    <ClCompile Include="classMain.cpp">
+      <Filter>cppfile</Filter>
+    </ClCompile>
+    <ClCompile Include="Dungeon.cpp">
+      <Filter>cppfile</Filter>
+    </ClCompile>
+    <ClCompile Include="Inventory.cpp">
+      <Filter>cppfile</Filter>
+    </ClCompile>
+    <ClCompile Include="Item.cpp">
+      <Filter>cppfile</Filter>
+    </ClCompile>
+    <ClCompile Include="Potion.cpp">
+      <Filter>cppfile</Filter>
+    </ClCompile>
+    <ClCompile Include="Smithy.cpp">
+      <Filter>cppfile</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>cppfile</Filter>
+    </ClCompile>
+    <ClCompile Include="Store.cpp">
+      <Filter>cppfile</Filter>
+    </ClCompile>
+    <ClCompile Include="TextGame.cpp">
+      <Filter>cppfile</Filter>
+    </ClCompile>
+    <ClCompile Include="TextGameInfo.cpp">
+      <Filter>cppfile</Filter>
+    </ClCompile>
+    <ClCompile Include="TextGamePlayer.cpp">
+      <Filter>cppfile</Filter>
+    </ClCompile>
+    <ClCompile Include="UI.cpp">
+      <Filter>cppfile</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="cppfile">
+      <UniqueIdentifier>{759b41d0-2e27-4ece-b4e7-405db6c2c648}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="header">
+      <UniqueIdentifier>{c1566701-829c-490a-bc69-ff9464936f64}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

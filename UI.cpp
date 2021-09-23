@@ -70,7 +70,7 @@ void UI::showStatus(TextGamePlayer &p)
 		gotoxy(0, 24);
 		cout << "Job :" << p.getJob() << endl;
 		gotoxy(0, 25);
-		cout << "HP : " << p.getHP() << endl;
+		cout << "HP : " << p.getHP() << "            " << endl;
 		gotoxy(0, 26);
 		cout << "MP : " << p.getMP() << endl;
 		gotoxy(0, 27);
@@ -98,7 +98,7 @@ void UI::showWhattodo()
 	gotoxy(50, 14);
 	cout << "4. GO to Smithy" << endl;
 	gotoxy(50, 15);
-	cout << "4. Exit Game" << endl;
+	cout << "5. Exit Game" << endl;
 	movecursor();
 
 }
@@ -236,6 +236,7 @@ void UI::showBattle()
 
 void UI::showInventory(vector<Weapon>& input)
 {
+	system("cls");
 	gotoxy(0, 0);
 	cout << "===========================" << endl;
 	cout << "公扁 LIST" << endl;
@@ -253,6 +254,7 @@ void UI::showInventory(vector<Weapon>& input)
 
 void UI::showInventory(vector<Armor>& input)
 {
+	system("cls");
 	gotoxy(0, 0);
 	cout << "===========================" << endl;
 	cout << "规绢备 LIST" << endl;
@@ -269,6 +271,7 @@ void UI::showInventory(vector<Armor>& input)
 
 void UI::showInventory(vector<Potion>& input)
 {
+	system("cls");
 	gotoxy(0, 0);
 	cout << "===========================" << endl;
 	cout << "器记 LIST" << endl;

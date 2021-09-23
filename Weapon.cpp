@@ -22,37 +22,43 @@ Weapon::Weapon(int itype)
 		this->iAttack = TextGameInfo::OneHandedSword::iAttack + rand() % 5;
 		this->iUseStamina = TextGameInfo::OneHandedSword::iUsemana - rand() % 3;
 		this->iUseMana = TextGameInfo::OneHandedSword::iUsemana;		
+		this->iWeight = TextGameInfo::OneHandedSword::iWeight;
 		break;
 	case 2:
 		this->iAttack = TextGameInfo::TwoHandedSword::iAttack + rand() % 5;
 		this->iUseStamina = TextGameInfo::TwoHandedSword::iUsemana - rand() % 3;
 		this->iUseMana = TextGameInfo::TwoHandedSword::iUsemana;
+		this->iWeight = TextGameInfo::TwoHandedSword::iWeight;
 		break;
 	case 3:
 		this->iAttack = TextGameInfo::ShortSword::iAttack + rand() % 5;
 		this->iUseStamina = TextGameInfo::ShortSword::iUsemana - rand() % 3;
 		this->iUseMana = TextGameInfo::ShortSword::iUsemana;
+		this->iWeight = TextGameInfo::ShortSword::iWeight;
 		break;
 	case 4:
 		this->iAttack = TextGameInfo::Niddle::iAttack + rand() % 5;
 		this->iUseStamina = TextGameInfo::Niddle::iUsemana - rand() % 3;
 		this->iUseMana = TextGameInfo::Niddle::iUsemana;
+		this->iWeight = TextGameInfo::Niddle::iWeight;
 		break;
 	case 5:
 		this->iAttack = TextGameInfo::Staff::iAttack + rand() % 5;
 		this->iUseStamina = TextGameInfo::Staff::iUsemana - rand() % 3;
-		this->iUseMana = TextGameInfo::Niddle::iUsemana;
+		this->iUseMana = TextGameInfo::Staff::iUsemana;
+		this->iWeight = TextGameInfo::Staff::iWeight;
 		break;
 	case 6:
 		this->iAttack = TextGameInfo::Wand::iAttack + rand() % 5;
 		this->iUseStamina = TextGameInfo::Wand::iUsemana - rand() % 3;
 		this->iUseMana = TextGameInfo::Wand::iUsemana;
+		this->iWeight = TextGameInfo::Wand::iWeight;
 		break;
 	default:
 		cout << "裹困 观狼 公扁 积己" << endl;
 		exit(1);
 	}
-	this->iWeight = 0;
+
 }
 
 
