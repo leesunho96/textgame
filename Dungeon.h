@@ -11,11 +11,15 @@ class Dungeon
 	pair<int, int> getActorLocation(int i, int j);
 	bool move(int iinput);
 	bool available(int ichoice);
-	bool turn(int index);
+	bool playerTurn(int index);
+	bool EnemyTurn(int index);
+
+
 	void battle(int index);
 	int findEnemy(pair<int, int> Enemylocation);
 	pair<int, int> playerlocaiton;
 	int moveIcon();
+
 
 
 

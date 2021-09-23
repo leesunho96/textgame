@@ -98,79 +98,84 @@ bool Dungeon::available(int ichoice)
 	}
 }
 
-bool Dungeon::turn(int index)
+
+
+bool Dungeon::playerTurn(int index)
 {
-	static bool temp = true;
-	//system("cls");
-	UI::showStatus(*player);
-	UI::showStatus(EnemyVector.at(index));
+	gotoxy(0, 0);
 	getch();
-	if (temp)
+	int result = moveIcon();
+	if (result < 30 || result > 70)
 	{
-		gotoxy(0, 0);
-		getch();
-		int result = moveIcon();
-		if (result < 30 || result > 70)
-		{
-			result = 1;
-		}
-		else if (result <= 70 && result >= 30)
-		{
-			result = 2;
-		}
-		textcolor(15);
-		gotoxy(0, 0);
-		cout << "플레이어의 공격                      " << endl;
-		switch (result)
-		{
-		case 1:
-			EnemyVector[index].applydamege(player->getAttack());			
-			break;
-		case 2:
-			EnemyVector[index].applydamege((int)(player->getAttack() * 1.5));			
-			break;
-		}
-
+		result = 1;
 	}
-	else
+	else if (result <= 70 && result >= 30)
 	{
-		gotoxy(0, 0);
-		cout << EnemyVector[index].getName() << "의 공격                 " << endl;
-		getch();
-		int result = rand() % 101;
-
-		if (result < 30 || result > 70)
-		{
-			result = 1;
-		}
-		else if (result <= 70 && result >= 30)
-		{
-			result = 2;
-		}
-		switch (result)
-		{
-		case 1:
-			player->applydamege(EnemyVector[index].getAttack());
-			break;
-		case 2:
-			player->applydamege((int)(EnemyVector[index].getAttack() * 1.5));
-			break;
-		}
+		result = 2;
+	}
+	textcolor(15);
+	gotoxy(0, 0);
+	cout << "플레이어의 공격                      " << endl;
+	switch (result)
+	{
+	case 1:
+		EnemyVector[index].applydamege(player->getAttack());
+		break;
+	case 2:
+		EnemyVector[index].applydamege((int)(player->getAttack() * 1.5));
+		break;
 	}
 
-	if (temp == true){temp = false;}
-	else { temp = true; }
+	return false;
+}
 
+bool Dungeon::EnemyTurn(int index)
+{
+	gotoxy(0, 0);
+	cout << EnemyVector[index].getName() << "의 공격                 " << endl;
+	getch();
+	int result = rand() % 101;
+
+	if (result < 30 || result > 70)
+	{
+		result = 1;
+	}
+	else if (result <= 70 && result >= 30)
+	{
+		result = 2;
+	}
+	switch (result)
+	{
+	case 1:
+		player->applydamege(EnemyVector[index].getAttack());
+		break;
+	case 2:
+		player->applydamege((int)(EnemyVector[index].getAttack() * 1.5));
+		break;
+	}
 	return false;
 }
 
 void Dungeon::battle(int index)
 {
 	system("cls");
+	bool isfast = (player->getWeight() >= EnemyVector[index].getWeight() ? true : false);
 
 	while (player->getHP() > 0 && EnemyVector[index].getHP() > 0)
 	{
-		turn(index);
+		UI::showStatus(*player);
+		UI::showStatus(EnemyVector.at(index));
+		getch();
+		if (isfast)
+		{
+			playerTurn(index);
+			isfast = false;
+		}
+		else
+		{
+			EnemyTurn(index);
+			isfast = true;
+		}
 	}
 	EnemyVector.erase(begin(EnemyVector) + index);
 
