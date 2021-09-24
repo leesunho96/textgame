@@ -145,11 +145,29 @@ Armor TextGamePlayer::getArmor(int index)
 	return temp;
 }
 
+Armor TextGamePlayer::getArmor()
+{
+	if (applyArmor == nullptr)
+	{
+		return Armor();
+	}
+	return *applyArmor;
+}
+
 Weapon TextGamePlayer::getWeapon(int index)
 {
 	Weapon temp = playerInventory->getWeapon(index);
 	playerInventory->popWeaponInventory(index);
 	return temp;
+}
+
+Weapon TextGamePlayer::getWeapon()
+{
+	if (applyWeapon == nullptr)
+	{
+		return Weapon();
+	}
+	return *applyWeapon;
 }
 
 Potion TextGamePlayer::getPotion(int index)

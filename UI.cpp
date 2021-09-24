@@ -85,6 +85,46 @@ void UI::showStatus(TextGamePlayer &p)
 	}
 }
 
+void UI::showEquipment(TextGamePlayer &p)
+{
+	system("cls");
+
+	gotoxy(0, 0);
+
+	if (p.getWeapon().getType() == 0)
+	{
+		cout << "=================================" << endl;
+		cout << "장착된 무기 : 없음" << endl;
+		cout << "=================================" << endl;
+	}
+	else
+	{
+		cout << "=================================" << endl;
+		cout << "장착된 무기 : " << p.getWeapon().getName() << endl;
+		cout << "공격력 : " << p.getWeapon().getEffect() << endl;
+		cout << "무게 : " << p.getWeapon().getWeight() << endl;
+		cout << "=================================" << endl;
+	}
+
+	if (p.getArmor().getType() == 0)
+	{
+		cout << "=================================" << endl;
+		cout << "장착된 방어구 : 없음" << endl;
+		cout << "=================================" << endl;
+	}
+	else
+	{
+		cout << "=================================" << endl;
+		cout << "장착된 방어구 : " << p.getArmor().getName() << endl;
+		cout << "방어력 : " << p.getArmor().getEffect() << endl;
+		cout << "무게 : " << p.getArmor().getWeight() << endl;
+		cout << "=================================" << endl;
+	}
+
+	fflush(stdin);
+	getch();
+}
+
 void UI::showWhattodo()
 {
 	gotoxy(50, 10);
@@ -98,7 +138,9 @@ void UI::showWhattodo()
 	gotoxy(50, 14);
 	cout << "4. GO to Smithy" << endl;
 	gotoxy(50, 15);
-	cout << "5. Exit Game" << endl;
+	cout << "5. Show Equiped Item" << endl;
+	gotoxy(50, 16);
+	cout << "6. Exit Game" << endl;
 	movecursor();
 
 }

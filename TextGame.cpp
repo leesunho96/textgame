@@ -75,6 +75,10 @@ void TextGame::run()
 			break;
 		}
 		case 5:
+			UI::showEquipment(*player);
+			break;
+
+		case 6:
 			exit(0);
 		}
 

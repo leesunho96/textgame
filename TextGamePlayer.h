@@ -65,7 +65,9 @@ public:
 	void applyItem(Armor input, int index);
 
 	Armor getArmor(int index);
+	Armor getArmor();
 	Weapon getWeapon(int index);
+	Weapon getWeapon();
 	Potion getPotion(int index);
 
 	int getWeight();
