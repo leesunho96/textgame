@@ -21,7 +21,7 @@ public:
 
 
 	int getAvoidance();
-
+	bool operator == (const Armor& temp);
 
 };
 

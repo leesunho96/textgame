@@ -68,4 +68,9 @@ int Armor::getAvoidance()
 	return iAvoidance;
 }
 
+bool Armor::operator==(const Armor & temp)
+{
+	return 	this->itype == temp.itype ? true : false;
+}
+
 

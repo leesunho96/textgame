@@ -35,5 +35,7 @@ public:
 	static void showStore(Store& store);
 
 
+	static void showIndexErrorMessage();
+
 };
 

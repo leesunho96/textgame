@@ -109,6 +109,11 @@ int Weapon::getWeight()
 	return iWeight;
 }
 
+bool Weapon::operator==(const Weapon & temp)
+{
+	return this->itype == temp.itype ? true : false;
+}
+
 
 
 

@@ -29,7 +29,7 @@ void Dungeon::invalidate()
 			case ENEMY:
 				temp = getActorLocation(i, j);
 				gotoxy(temp.first, temp.second);
-				setBackgroundGreen();
+				//setBackgroundGreen();
 				cout << "¡â";
 				break;
 			case LOCK:

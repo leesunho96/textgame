@@ -11,11 +11,15 @@ class Potion : public Item
 
 public:
 	Potion();
+	Potion(int input);
 	virtual int getEffect();
 	virtual int getType();
 	virtual string getName();
 	virtual bool enhance();
 	virtual int getWeight();
 
+
+	bool operator == (const Potion& target);
+		
 };
 

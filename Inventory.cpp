@@ -90,17 +90,60 @@ void Inventory::popArmorInventory(int index)
 
 Potion Inventory::getPotion(int index)
 {
-	return potionInventory.at(index - 1);
+	
+	try {
+
+		if (index - 1 < potionInventory.size())
+		{
+			return potionInventory.at(index - 1);
+		}
+		else
+		{
+			throw out_of_range("orr");
+		}
+	}
+	catch (std::out_of_range& oor)
+	{
+		return Potion(0);
+	}
+	//return Potion(0);
 }
 
 Weapon Inventory::getWeapon(int index)
 {
-	return weaponInventory.at(index - 1);
+	try {
+		if (index - 1 < weaponInventory.size())
+		{
+			return weaponInventory.at(index - 1);
+		}
+		else
+		{
+			throw out_of_range("orr");
+		}
+	}
+	catch (std::out_of_range& oor)
+	{
+		return Weapon();
+	}
+	return Weapon();
 }
 
 Armor Inventory::getArmor(int index)
 {
-	return armorInverntory.at(index - 1);
+	try {
+		if (index - 1 < armorInverntory.size())
+		{
+			return armorInverntory.at(index - 1);
+		}
+		else
+		{
+			throw out_of_range("orr");
+		}
+	}
+	catch (std::out_of_range& oor)
+	{
+		return Armor();
+	}	
 }
 
 void Inventory::open(TextGamePlayer* player)

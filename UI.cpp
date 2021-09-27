@@ -385,6 +385,15 @@ void UI::showStore(Store & store)
 
 }
 
+void UI::showIndexErrorMessage()
+{
+	system("cls");
+	gotoxy(0, 0);
+	cout << "인덱스 에러입니다. 올바른 범위의 수를 입력하세요" << endl;
+	fflush(stdin);
+	getch();
+}
+
 
 
 

@@ -11,6 +11,12 @@ Potion::Potion()
 	this->healMP = TextGameInfo::potion::iHealMP + rand() % 5;
 }
 
+Potion::Potion(int input)
+{
+	healHP = 0;
+	healMP = 0;
+}
+
 int Potion::getEffect()
 {
 	return healHP;
@@ -34,5 +40,10 @@ bool Potion::enhance()
 int Potion::getWeight()
 {
 	return 0;
+}
+
+bool Potion::operator==(const Potion& target)
+{
+	return (this->healHP == target.healHP) && (this->healMP == target.healMP) ? true : false;
 }
 

@@ -17,6 +17,9 @@ public:
 	virtual int getEffect();
 	virtual bool enhance();	
 	virtual int getWeight();
+
+	bool operator == (const Weapon& temp);
+
 	
 };
 
