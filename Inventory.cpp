@@ -23,13 +23,13 @@ Inventory::Inventory(int input)
 	case 0:
 		for (size_t i = 0; i < 5; i++)
 		{
-			potionInventory.push_back(*(new Potion()));
+			potionInventory.push_back(Potion());
 		}
 
-		weaponInventory.push_back(*(new Weapon(rand() % 6 + 1)));
-		weaponInventory.push_back(*(new Weapon(rand() % 6 + 1)));
-		armorInverntory.push_back(*(new Armor(rand() % 2 + 1)));
-		armorInverntory.push_back(*(new Armor(rand() % 2 + 1)));
+		weaponInventory.push_back(Weapon(rand() % 6 + 1));
+		weaponInventory.push_back(Weapon(rand() % 6 + 1));
+		armorInverntory.push_back(Armor(rand() % 2 + 1));
+		armorInverntory.push_back(Armor(rand() % 2 + 1));
 
 
 
@@ -45,14 +45,14 @@ Inventory::Inventory(int input)
 		case 4:
 		case 5:
 		case 6:
-			weaponInventory.push_back(*(new Weapon(input)));
+			weaponInventory.push_back(Weapon(input));
 			break;
 		case 7:
 		case 8:
-			armorInverntory.push_back(*(new Armor(input % 6)));
+			armorInverntory.push_back(Armor(input % 6));
 			break;
 		case 9:
-			potionInventory.push_back(*(new Potion()));
+			potionInventory.push_back(Potion());
 			break;
 		}
 	}
@@ -75,75 +75,33 @@ void Inventory::pushInventory(Armor & push)
 
 void Inventory::popPotionInventory(int index)
 {
-	potionInventory.erase(begin(potionInventory) + index - 1);
+	popInventory(potionInventory, index);
 }
 
 void Inventory::popWeaponInventory(int index)
 {
-	weaponInventory.erase(begin(weaponInventory) + index - 1);
+	popInventory(weaponInventory, index);
 }
 
 void Inventory::popArmorInventory(int index)
 {
-	armorInverntory.erase(begin(armorInverntory) + index - 1);
+	popInventory(armorInverntory, index);
 }
 
 Potion Inventory::getPotion(int index)
-{
-	
-	try {
-
-		if (index - 1 < potionInventory.size())
-		{
-			return potionInventory.at(index - 1);
-		}
-		else
-		{
-			throw out_of_range("orr");
-		}
-	}
-	catch (std::out_of_range& oor)
-	{
-		return Potion(0);
-	}
-	//return Potion(0);
+{	
+	Potion temp = getItem(potionInventory, index);
+	return temp == Potion(0) ? temp : Potion(0);
 }
 
 Weapon Inventory::getWeapon(int index)
 {
-	try {
-		if (index - 1 < weaponInventory.size())
-		{
-			return weaponInventory.at(index - 1);
-		}
-		else
-		{
-			throw out_of_range("orr");
-		}
-	}
-	catch (std::out_of_range& oor)
-	{
-		return Weapon();
-	}
-	return Weapon();
+	return getItem(weaponInventory, index);
 }
 
 Armor Inventory::getArmor(int index)
 {
-	try {
-		if (index - 1 < armorInverntory.size())
-		{
-			return armorInverntory.at(index - 1);
-		}
-		else
-		{
-			throw out_of_range("orr");
-		}
-	}
-	catch (std::out_of_range& oor)
-	{
-		return Armor();
-	}	
+	return getItem(armorInverntory, index);
 }
 
 void Inventory::open(TextGamePlayer* player)

@@ -263,11 +263,10 @@ void TextGamePlayer::initializeDefense()
 
 
 
-
+// player Initialization
 TextGamePlayer::TextGamePlayer(int i, string sname)
 {
 	{
-
 		// 캐릭터 타입을 입력받아서 해당되는 스탯으로 초기화.
 		// 플레이어일 경우 1 ~ 3, 몹일경우 4 ~ 6
 
@@ -351,6 +350,7 @@ TextGamePlayer::TextGamePlayer(int i, string sname)
 	iWeight = 0;
 }
 
+// Enemy Initialization
 TextGamePlayer::TextGamePlayer(int i, string sname, pair<int, int> location)
 {
 	{
@@ -406,7 +406,7 @@ TextGamePlayer::TextGamePlayer(int i, string sname, pair<int, int> location)
 			sName = "GOBLIN";
 			sjob = "ROGUE";
 			break;
-			break;
+			
 		case 6:
 			iHp = TextGameInfo::Oak::iHP;
 			iMp = TextGameInfo::Oak::iMP;

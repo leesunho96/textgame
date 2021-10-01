@@ -9,6 +9,7 @@
 
 void Dungeon::invalidate()
 {
+	//system("cls");
 	pair<int, int> temp;
 	for (int i = 0; i < VERTICALSIZE; i++)
 	{
@@ -29,7 +30,7 @@ void Dungeon::invalidate()
 			case ENEMY:
 				temp = getActorLocation(i, j);
 				gotoxy(temp.first, temp.second);
-				//setBackgroundGreen();
+				setBackgroundGreen();
 				cout << "¡â";
 				break;
 			case LOCK:
@@ -417,6 +418,7 @@ void Dungeon::run()
 					}
 					
 					Sleep(1000);
+					system("cls");
 
 				}
 			}
@@ -424,7 +426,7 @@ void Dungeon::run()
 		}
 		
 	}
-
+	
 }
 
 void Dungeon::showEnemyNum()

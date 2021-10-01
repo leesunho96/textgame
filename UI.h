@@ -36,6 +36,6 @@ public:
 
 
 	static void showIndexErrorMessage();
-
+	static void outofrangeErrorMessage();
 };
 

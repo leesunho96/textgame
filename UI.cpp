@@ -394,6 +394,16 @@ void UI::showIndexErrorMessage()
 	getch();
 }
 
+void UI::outofrangeErrorMessage()
+{
+	system("cls");
+	gotoxy(0, 0);
+	cout << "인벤토리의 범위를 벗어났습니다." << endl;
+	fflush(stdin);
+	_getch();
+}
+
+
 
 
 

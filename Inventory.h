@@ -9,6 +9,11 @@ class Item;
 
 class Inventory {
 
+	template <class t1>
+	void popInventory(vector<t1> &input, int index);
+
+	template <class t2>
+	t2 getItem(vector<t2> &input, int index);
 	void inventoryApply(TextGamePlayer* player, Item* input);
 
 public:
@@ -36,3 +41,33 @@ public:
 	void showArmorInventory();
 	void showPotionInventory();
 };
+
+template<class t1>
+inline void Inventory::popInventory(vector<t1>& input, int index)
+{
+
+	if (index - 1 < input.size())
+	{
+		input.erase(begin(input) + index - 1);
+	}
+	else
+	{
+		UI::outofrangeErrorMessage();
+	}
+
+}
+
+template<class t2>
+inline t2 Inventory::getItem(vector<t2>& input, int index)
+{
+	if (index - 1 < weaponInventory.size())
+	{
+		return input.at(index - 1);
+	}
+	else
+	{
+		UI::outofrangeErrorMessage();
+		return t2();
+	}
+}
+

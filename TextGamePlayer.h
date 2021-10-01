@@ -9,7 +9,11 @@ class Potion;
 
 class TextGamePlayer
 {
+	int ilevel;
+	int iMaxExp;
+	int iPresentExp;
 	int iAttack;
+	int iMaxHP;
 	int iHp;
 	int iMp;
 	int iAvoidance;
@@ -21,7 +25,6 @@ class TextGamePlayer
 	pair<int, int> location;
 	int identity;
 	Inventory *playerInventory;
-	int iMaxHP;
 	Weapon *applyWeapon = nullptr;
 	Armor *applyArmor = nullptr;
 	static vector<pair<int, int>> enemylocationlist;
