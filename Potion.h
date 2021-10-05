@@ -21,5 +21,6 @@ public:
 
 	bool operator == (const Potion& target);
 		
+	virtual ~Potion();
 };
 

@@ -147,6 +147,24 @@ void UI::showWhattodo()
 
 }
 
+void UI::showWareHouseWhattodo()
+{
+	system("cls");
+	gotoxy(50, 5);
+	cout << "===========================" << endl;
+	gotoxy(50, 6);
+	cout << "무엇을 할까요?" << endl;
+	gotoxy(50, 7);
+	cout << "1. 인벤토리로 돌려놓기" << endl;
+	gotoxy(50, 8);
+	cout << "2. 파기하기" << endl;
+	gotoxy(50, 9);
+	cout << "-1 : 돌아가기" << endl;
+	gotoxy(50, 11);
+	cout << "===========================" << endl;
+	movecursor();
+}
+
 void UI::showDungeonMap()
 {
 	gotoxy(20, 5);
@@ -329,6 +347,22 @@ void UI::showInventory(vector<Potion>& input)
 	cout << "아이템을 선택하세요." << endl;
 }
 
+void UI::showWareHouse(vector<Item*> &input)
+{
+	system("cls");
+	gotoxy(0, 0);
+	cout << "===========================" << endl;
+	cout << "창고 LIST" << endl;
+	for (auto& temp : input)
+	{
+		cout << "이름 : " << temp->getName() << endl;
+		cout << "효과 : " << temp->getEffect() << endl;
+	}
+	cout << "===========================" << endl;
+	gotoxy(0, 20);
+	cout << "아이템을 선택하세요." << endl;
+}
+
 
 
 void UI::showInventoryWhattodo()
@@ -343,8 +377,10 @@ void UI::showInventoryWhattodo()
 	gotoxy(50, 8);
 	cout << "2. 파기하기" << endl;
 	gotoxy(50, 9);
-	cout << "-1 : 돌아가기" << endl;
+	cout << "3. 창고에 넣기" << endl;
 	gotoxy(50, 10);
+	cout << "-1 : 돌아가기" << endl;
+	gotoxy(50, 11);
 	cout << "===========================" << endl;
 	movecursor();
 }
@@ -362,8 +398,10 @@ void UI::showInventoryIntro()
 	gotoxy(50, 9);
 	cout << "3. 포션 인벤토리" << endl;
 	gotoxy(50, 10);
-	cout << "-1 : 돌아가기" << endl;
+	cout << "4. 창고" << endl;
 	gotoxy(50, 11);
+	cout << "-1 : 돌아가기" << endl;
+	gotoxy(50, 12);
 	cout << "===========================" << endl;
 }
 
@@ -404,7 +442,7 @@ void UI::outofrangeErrorMessage()
 	gotoxy(0, 0);
 	cout << "인벤토리의 범위를 벗어났습니다." << endl;
 	fflush(stdin);
-	_getch();
+ 	_getch();
 }
 
 

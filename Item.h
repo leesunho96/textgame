@@ -10,5 +10,6 @@ public:
 	virtual int getWeight() = 0;
 	virtual bool enhance() = 0;
 
+	virtual ~Item();
 };
 

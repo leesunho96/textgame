@@ -114,6 +114,10 @@ bool Weapon::operator==(const Weapon & temp)
 	return this->itype == temp.itype ? true : false;
 }
 
+Weapon::~Weapon()
+{
+}
+
 
 
 

@@ -19,7 +19,7 @@ public:
 	virtual int getWeight();
 
 	bool operator == (const Weapon& temp);
-
+	virtual ~Weapon();
 	
 };
 

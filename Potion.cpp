@@ -47,3 +47,7 @@ bool Potion::operator==(const Potion& target)
 	return (this->healHP == target.healHP) && (this->healMP == target.healMP) ? true : false;
 }
 
+Potion::~Potion()
+{
+}
+

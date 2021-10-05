@@ -9,6 +9,10 @@ class Item;
 
 class Inventory {
 
+	void chooseWhattodo(int invensize, int whattodo, TextGamePlayer * player, int &retflag);
+	int chooseInventory(int &retflag);
+	void openWareHouse(int invensize, TextGamePlayer * player, int &retflag);
+
 	template <class t1>
 	void popInventory(vector<t1> &input, int index);
 
@@ -22,24 +26,24 @@ public:
 	vector<Potion> potionInventory;
 	vector<Weapon> weaponInventory;
 	vector<Armor> armorInverntory;
-	vector<Item&> wareHouse;
+	vector<Item*> wareHouse;
 
 
 	void pushInventory(Potion& push);
 	void pushInventory(Weapon& push);
 	void pushInventory(Armor& push);
-	void pushWareHouse(Item& push);
+	void pushWareHouse(Item* push);
 	
 	void popPotionInventory(int index);
 	void popWeaponInventory(int index);
 	void popArmorInventory(int index);
-	void popWareHouse(int index);
+	bool popWareHouse(int index);
 
 
 	Potion getPotion(int index);
 	Weapon getWeapon(int index);
 	Armor getArmor(int index);
-	Item& getWareHouse(int index);
+	Item* getWareHouse(int index);
 
 
 	void open(TextGamePlayer* player);
