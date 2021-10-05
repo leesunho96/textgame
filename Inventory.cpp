@@ -73,6 +73,8 @@ void Inventory::pushInventory(Armor & push)
 	armorInverntory.push_back(push);
 }
 
+
+
 void Inventory::popPotionInventory(int index)
 {
 	popInventory(potionInventory, index);
@@ -87,6 +89,8 @@ void Inventory::popArmorInventory(int index)
 {
 	popInventory(armorInverntory, index);
 }
+
+
 
 Potion Inventory::getPotion(int index)
 {	
@@ -103,6 +107,8 @@ Armor Inventory::getArmor(int index)
 {
 	return getItem(armorInverntory, index);
 }
+
+
 
 void Inventory::open(TextGamePlayer* player)
 {
@@ -191,6 +197,7 @@ void Inventory::showPotionInventory()
 {
 	UI::showInventory(potionInventory);
 }
+
 
 
 

@@ -44,20 +44,22 @@ void UI::showStatus(TextGamePlayer &p)
 		gotoxy(80, 22);
 		cout << "==========================" << endl;
 		gotoxy(80, 23);
-		cout << "Name : " << p.getName() << endl;
+		cout << "LV : " << p.getLevel() << endl;
 		gotoxy(80, 24);
-		cout << "Job :" << p.getJob() << endl;
+		cout << "Name : " << p.getName() << endl;
 		gotoxy(80, 25);
-		cout << "HP : " << p.getHP() << "     " << endl;
+		cout << "Job :" << p.getJob() << endl;
 		gotoxy(80, 26);
-		cout << "MP : " << p.getMP() << "   " << endl;
+		cout << "HP : " << p.getHP() << "     " << endl;
 		gotoxy(80, 27);
-		cout << "Attack : " << p.getAttack() << endl;
+		cout << "MP : " << p.getMP() << "   " << endl;
 		gotoxy(80, 28);
-		cout << "Defence : " << p.getDefence() << endl;
+		cout << "Attack : " << p.getAttack() << endl;
 		gotoxy(80, 29);
-		cout << "Weight : " << p.getWeight();
+		cout << "Defence : " << p.getDefence() << endl;
 		gotoxy(80, 30);
+		cout << "Weight : " << p.getWeight();
+		gotoxy(80, 31);
 		cout << "==========================" << endl;
 		movecursor();
 	}
@@ -326,6 +328,8 @@ void UI::showInventory(vector<Potion>& input)
 	gotoxy(0, 20);
 	cout << "아이템을 선택하세요." << endl;
 }
+
+
 
 void UI::showInventoryWhattodo()
 {

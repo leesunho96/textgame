@@ -14,6 +14,7 @@ class Inventory {
 
 	template <class t2>
 	t2 getItem(vector<t2> &input, int index);
+
 	void inventoryApply(TextGamePlayer* player, Item* input);
 
 public:
@@ -22,17 +23,22 @@ public:
 	vector<Weapon> weaponInventory;
 	vector<Armor> armorInverntory;
 
+
+
 	void pushInventory(Potion& push);
 	void pushInventory(Weapon& push);
 	void pushInventory(Armor& push);
+
 	
 	void popPotionInventory(int index);
 	void popWeaponInventory(int index);
 	void popArmorInventory(int index);
 
+
 	Potion getPotion(int index);
 	Weapon getWeapon(int index);
 	Armor getArmor(int index);
+
 
 
 	void open(TextGamePlayer* player);
@@ -40,6 +46,7 @@ public:
 	void showWeaponInventory();
 	void showArmorInventory();
 	void showPotionInventory();
+	void showWareHouse();
 };
 
 template<class t1>
@@ -60,7 +67,7 @@ inline void Inventory::popInventory(vector<t1>& input, int index)
 template<class t2>
 inline t2 Inventory::getItem(vector<t2>& input, int index)
 {
-	if (index - 1 < weaponInventory.size())
+	if (index - 1 < input.size())
 	{
 		return input.at(index - 1);
 	}

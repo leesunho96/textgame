@@ -416,7 +416,7 @@ void Dungeon::run()
 						cout << "µ·À» È¹µæÇÏ¿´½À´Ï´Ù." << endl;
 						break;
 					}
-					
+					player->getEXP();
 					Sleep(1000);
 					system("cls");
 

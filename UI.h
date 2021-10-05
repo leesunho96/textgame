@@ -29,6 +29,7 @@ public:
 	static void showInventory(vector<Armor> &input);
 	static void showInventory(vector<Potion> &input);
 
+
 	static void showInventoryWhattodo();
 
 	static void showInventoryIntro();

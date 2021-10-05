@@ -177,9 +177,40 @@ Potion TextGamePlayer::getPotion(int index)
 	return temp;
 }
 
+void TextGamePlayer::getEXP()
+{
+	srand(time(NULL));
+	iPresentExp += rand() % 30;
+	if (iPresentExp >= iMaxExp)
+	{
+		iPresentExp = iPresentExp % iMaxExp;
+		levelUP();
+	}
+}
+
+void TextGamePlayer::levelUP()
+{
+	ilevel++;
+	iMaxExp *= 1.5;
+	characterBaseStat.levelUP();
+	initializeAttack();
+	initializeDefense();
+	initializeHP();
+	iAttack += applyWeapon->getEffect();
+	iDefence += applyArmor->getEffect();
+	iAvoidance += applyArmor->getAvoidance();
+	iWeight += applyArmor->getWeight();
+	iWeight += applyWeapon->getWeight();
+}
+
 int TextGamePlayer::getWeight()
 {
 	return iWeight;
+}
+
+int TextGamePlayer::getLevel()
+{
+	return ilevel;
 }
 
 void TextGamePlayer::getItem()
@@ -228,37 +259,19 @@ void TextGamePlayer::getItem()
 
 void TextGamePlayer::initializeAttack()
 {
-	if (sjob == "WORRIER")
-	{
-		this->iAttack = TextGameInfo::Worrier::iAttack;
-	}
-	else if (sjob == "ROGUE")
-	{
-		this->iAttack = TextGameInfo::Rogue::iAttack;
-	}
-	else
-	{
-		this->iAttack = TextGameInfo::Mage::iAttack;
-	}
+	this->iAttack = characterBaseStat.iAttack;
 }
 
 void TextGamePlayer::initializeDefense()
 {
-	if (sjob == "WORRIER")
-	{
-		this->iDefence = TextGameInfo::Worrier::iDefence;
-		this->iAvoidance = TextGameInfo::Worrier::iavoidance;
-	}
-	else if (sjob == "ROGUE")
-	{
-		this->iDefence = TextGameInfo::Rogue::iDefence;
-		this->iAvoidance = TextGameInfo::Rogue::iavoidance;
-	}
-	else
-	{
-		this->iDefence = TextGameInfo::Mage::iDefence;
-		this->iAvoidance = TextGameInfo::Mage::iavoidance;
-	}
+	this->iDefence = characterBaseStat.iDefence;
+	this->iAvoidance = characterBaseStat.iAvoidnce;
+}
+
+void TextGamePlayer::initializeHP()
+{
+	this->iHp = characterBaseStat.iHP;
+	this->iMaxHP = characterBaseStat.iHP;
 }
 
 
@@ -273,6 +286,7 @@ TextGamePlayer::TextGamePlayer(int i, string sname)
 		switch (i)
 		{
 		case 1:
+			iMaxHP = TextGameInfo::Worrier::iHP;
 			iHp = TextGameInfo::Worrier::iHP;
 			iMp = TextGameInfo::Worrier::iMP;
 			iAttack = TextGameInfo::Worrier::iAttack;
@@ -282,6 +296,7 @@ TextGamePlayer::TextGamePlayer(int i, string sname)
 			sjob = "WORRIER";
 			break;
 		case 2:
+			iMaxHP = TextGameInfo::Rogue::iHP;
 			iHp = TextGameInfo::Rogue::iHP;
 			iMp = TextGameInfo::Rogue::iMP;
 			iAttack = TextGameInfo::Rogue::iAttack;
@@ -291,6 +306,7 @@ TextGamePlayer::TextGamePlayer(int i, string sname)
 			sjob = "ROGUE";
 			break;
 		case 3:
+			iMaxHP = TextGameInfo::Mage::iHP;
 			iHp = TextGameInfo::Mage::iHP;
 			iMp = TextGameInfo::Mage::iMP;
 			iAttack = TextGameInfo::Mage::iAttack;
@@ -344,10 +360,15 @@ TextGamePlayer::TextGamePlayer(int i, string sname)
 		}
 
 		playerInventory = new Inventory((int)(i / 4));
-		iMaxHP = iHp;
+
 
 	}
 	iWeight = 0;
+	iMaxExp = 100;
+	iPresentExp = 0;
+	ilevel = 1;
+	characterBaseStat = baseStat(iMaxHP, iAttack, iMp, iDefence, iAvoidance);
+
 }
 
 // Enemy Initialization

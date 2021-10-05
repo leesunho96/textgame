@@ -7,6 +7,40 @@ class Armor;
 class Potion;
 
 
+struct baseStat
+{
+public:
+	int iHP;
+	int iAttack;
+	int iMP;
+	int iDefence;
+	int iAvoidnce;
+	baseStat()
+	{
+		this->iHP = 0;
+		this->iAttack = 0;
+		this->iMP = 0;
+		this->iDefence = 0;
+		this->iAvoidnce = 0;
+	}
+	baseStat(int iHP, int iAttack, int iMP, int iDefence, int iAvoidance)
+	{
+		this->iHP = iHP;
+		this->iAttack = iAttack;
+		this->iMP = iMP;
+		this->iDefence = iDefence;
+		this->iAvoidnce = iAvoidance;
+	}
+	void levelUP()
+	{
+		iHP += 10;
+		iAttack += 5;
+		iMP += 5;
+		iDefence += 5;
+		iAvoidnce += 3;
+	}
+};
+
 class TextGamePlayer
 {
 	int ilevel;
@@ -30,9 +64,9 @@ class TextGamePlayer
 	static vector<pair<int, int>> enemylocationlist;
 	void initializeAttack();
 	void initializeDefense();
+	baseStat characterBaseStat;
+	void initializeHP();
 	
-	
-
 public:
 
 	TextGamePlayer(int i, string sname);
@@ -73,7 +107,10 @@ public:
 	Weapon getWeapon();
 	Potion getPotion(int index);
 
-	int getWeight();
+	void getEXP();
+	void levelUP();
 
+	int getWeight();
+	int getLevel();
 	void getItem();
 };	

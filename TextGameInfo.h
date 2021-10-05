@@ -132,6 +132,7 @@ public:
 	class potion
 	{
 	public:
+		const static int itype = 7;
 		const static int iHealHP = 10;
 		const static int iHealMP = 10;
 	};
