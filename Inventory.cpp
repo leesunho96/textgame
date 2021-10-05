@@ -73,6 +73,11 @@ void Inventory::pushInventory(Armor & push)
 	armorInverntory.push_back(push);
 }
 
+void Inventory::pushWareHouse(Item & push)
+{
+	wareHouse.push_back(push);
+}
+
 
 
 void Inventory::popPotionInventory(int index)
@@ -88,6 +93,11 @@ void Inventory::popWeaponInventory(int index)
 void Inventory::popArmorInventory(int index)
 {
 	popInventory(armorInverntory, index);
+}
+
+void Inventory::popWareHouse(int index)
+{
+	popInventory(wareHouse, index);
 }
 
 
@@ -106,6 +116,11 @@ Weapon Inventory::getWeapon(int index)
 Armor Inventory::getArmor(int index)
 {
 	return getItem(armorInverntory, index);
+}
+
+Item & Inventory::getWareHouse(int index)
+{
+	return getItem(wareHouse, index);
 }
 
 
@@ -196,6 +211,10 @@ void Inventory::showArmorInventory()
 void Inventory::showPotionInventory()
 {
 	UI::showInventory(potionInventory);
+}
+
+void Inventory::showWareHouse()
+{
 }
 
 
