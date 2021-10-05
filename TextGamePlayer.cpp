@@ -490,6 +490,21 @@ int TextGamePlayer::getMoney()
 	return iMoney;
 }
 
+int TextGamePlayer::getWeaponInvenSize()
+{
+	return playerInventory->weaponInventory.size();
+}
+
+int TextGamePlayer::getArmorInvenSize()
+{
+	return playerInventory->armorInverntory.size();
+}
+
+int TextGamePlayer::getPotionInvenSize()
+{
+	return playerInventory->potionInventory.size();
+}
+
 bool TextGamePlayer::useMoney(int money)
 {
 	if (iMoney >= money)

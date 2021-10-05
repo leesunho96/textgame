@@ -34,6 +34,7 @@ public:
 	static void showInventoryWhattodo();
 
 	static void showInventoryIntro();
+	static void showSmithyIntro();
 	static void showStore(Store& store);
 
 

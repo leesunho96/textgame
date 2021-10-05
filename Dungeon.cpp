@@ -112,7 +112,7 @@ bool Dungeon::playerTurn(int index)
 	cout << "플레이어의 공격                      " << endl;
 	cout << "                                    " << endl;
 	gotoxy(0, 1);
-	getch();
+	_getch();
 	int result = moveIcon();
 	if (result < 30 || result > 70)
 	{
@@ -139,7 +139,7 @@ bool Dungeon::EnemyTurn(int index)
 {
 	gotoxy(0, 0);
 	cout << EnemyVector[index].getName() << "의 공격                 " << endl;
-	getch();
+	_getch();
 	int result = rand() % 101;
 
 	if (result < 30 || result > 70)
@@ -374,10 +374,10 @@ void Dungeon::run()
 
 
 
-		temp = getch();
+		temp = _getch();
 		if (temp == 224)
 		{
-			temp = getch();
+			temp = _getch();
 		}
 		if (temp == 'i')
 		{

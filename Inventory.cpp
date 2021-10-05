@@ -279,7 +279,7 @@ int Inventory::chooseInventory(int &retflag)
 		return invensize;
 		break;
 	default:
-	{ retflag = temp; return invensize; };
+	{ retflag = temp; return 0; };
 	}
 }
 

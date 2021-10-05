@@ -79,6 +79,12 @@ public:
 	int getAvoidance();
 	int getDefence();
 	int getMoney();
+
+	int getWeaponInvenSize();
+	int getArmorInvenSize();
+	int getPotionInvenSize();
+
+
 	bool useMoney(int money);
 	string getName();
 	string getJob();

@@ -11,6 +11,7 @@ class Smithy
 	bool indexcheck(int type, Item* checkingItem);
 public:
 	~Smithy();
-	void run(TextGamePlayer& player);
+	bool run(TextGamePlayer& player);
+	bool isSacrificeItemExist(int temp, TextGamePlayer & player, int &retflag);
 };
 

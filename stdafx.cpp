@@ -37,6 +37,6 @@ void setBackgroundGray()
 
 void touch()
 {
-	getch();
+	_getch();
 
 }

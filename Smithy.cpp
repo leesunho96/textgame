@@ -56,13 +56,13 @@ Smithy::~Smithy()
 	}
 }
 
-void Smithy::run(TextGamePlayer & player)
+bool Smithy::run(TextGamePlayer & player)
 {
 	// 강화할 종류
 	while (true)
 	{
 		system("cls");
-		UI::showInventoryIntro();
+		UI::showSmithyIntro();
 		int temp;
 
 		cin >> temp;
@@ -70,7 +70,7 @@ void Smithy::run(TextGamePlayer & player)
 		{
 			break;
 		}
-		if (temp < 1 || temp > 3)
+		if (temp < 1 || temp > 2)
 		{
 			cout << "범위 내의 수를 입력해주세요." << endl;
 			continue;
@@ -84,9 +84,7 @@ void Smithy::run(TextGamePlayer & player)
 		case 2:
 			player.showArmorInventory();
 			break;
-		case 3:
-			player.showPotionInventory();
-			break;
+
 		default:
 			continue;
 		}
@@ -101,7 +99,7 @@ void Smithy::run(TextGamePlayer & player)
 			if (indexcheck(1, enhance_item))
 			{
 				UI::showIndexErrorMessage();
-				continue;
+				return false;
 			}
 			break;
 		case 2:
@@ -109,35 +107,29 @@ void Smithy::run(TextGamePlayer & player)
 			if (indexcheck(2, enhance_item))
 			{
 				UI::showIndexErrorMessage();
-				continue;
-			}
-			break;
-		case 3:
-			enhance_item = new Potion(player.getPotion(index));
-			if (indexcheck(3, enhance_item))
-			{
-				UI::showIndexErrorMessage();
-				continue;
+				return false;
 			}
 			break;
 		default:
-			return;
+			return false;
 		}
 
-		switch (temp)
+
 		{
-		case 1:
-			player.showWeaponInventory();
-			break;
-		case 2:
-			player.showArmorInventory();
-			break;
-		case 3:
-			player.showPotionInventory();
-			break;
-		default:
-			return;
+			int retflag;
+			bool retval = isSacrificeItemExist(temp, player, retflag);
+			if (retflag == 3)
+			{
+				system("cls");
+				gotoxy(0, 0);
+				cout << "제물로 사용될 아이템이 없습니다." << endl;
+				touch();
+				continue;
+			}
+			if (retflag == 1) return retval;
 		}
+
+
 
 		gotoxy(0, 29);
 		cout << "제물을 고르세요.                              " << endl;
@@ -150,7 +142,8 @@ void Smithy::run(TextGamePlayer & player)
 			if (indexcheck(1, enhance_item))
 			{
 				UI::showIndexErrorMessage();
-				continue;
+				player.pushItem(*(Weapon*)enhance_item);
+				return false;
 			}
 			break;
 		case 2:
@@ -158,19 +151,13 @@ void Smithy::run(TextGamePlayer & player)
 			if (indexcheck(2, enhance_item))
 			{
 				UI::showIndexErrorMessage();
-				continue;
+				player.pushItem(*(Armor*)enhance_item);
+				return false;
 			}
 			break;
-		case 3:
-			sacrificed_Item = new Potion(player.getPotion(index));
-			if (indexcheck(3, enhance_item))
-			{
-				UI::showIndexErrorMessage();
-				continue;
-			}
-			break;
+;
 		default:
-			return;
+			return false;
 		}
 
 		if (enhance_item->enhance())
@@ -183,11 +170,8 @@ void Smithy::run(TextGamePlayer & player)
 			case 2:
 				player.pushItem(*(Armor*)enhance_item);
 				break;
-			case 3:
-				player.pushItem(*(Potion*)enhance_item);
-				break;
 			default:
-				return;
+				return false;
 			}
 			system("cls");
 			gotoxy(0, 0);
@@ -203,4 +187,48 @@ void Smithy::run(TextGamePlayer & player)
 		fflush(stdin);
 		_getch();
 	}
+	return true;
+}
+
+bool Smithy::isSacrificeItemExist(int temp, TextGamePlayer & player, int &retflag)
+{
+	retflag = 1;
+	int presentInvensize = 0;
+	switch (temp)
+	{
+	case 1:
+		player.showWeaponInventory();
+		presentInvensize = player.getWeaponInvenSize();
+		break;
+	case 2:
+		player.showArmorInventory();
+		presentInvensize = player.getArmorInvenSize();
+		break;
+	case 3:
+		player.showPotionInventory();
+		presentInvensize = player.getPotionInvenSize();
+		break;
+	default:
+		return false;
+	}
+
+	if (presentInvensize == 0)
+	{
+
+		switch (temp)
+		{
+		case 1:
+			player.pushItem(*(Weapon*)enhance_item);
+			break;
+		case 2:
+			player.pushItem(*(Armor*)enhance_item);
+			break;
+		case 3:
+			player.pushItem(*(Potion*)enhance_item);
+			break;
+		}
+		{ retflag = 3; return {}; };
+	}
+	retflag = 0;
+	return {};
 }

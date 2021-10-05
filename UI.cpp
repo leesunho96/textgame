@@ -124,7 +124,7 @@ void UI::showEquipment(TextGamePlayer &p)
 	}
 
 	fflush(stdin);
-	getch();
+	_getch();
 }
 
 void UI::showWhattodo()
@@ -405,6 +405,22 @@ void UI::showInventoryIntro()
 	cout << "===========================" << endl;
 }
 
+void UI::showSmithyIntro()
+{
+	gotoxy(50, 5);
+	cout << "===========================" << endl;
+	gotoxy(50, 6);
+	cout << "어떤 인벤토리를 열까요?" << endl;
+	gotoxy(50, 7);
+	cout << "1. 무기 인벤토리" << endl;
+	gotoxy(50, 8);
+	cout << "2. 방어구 인벤토리" << endl;
+	gotoxy(50, 9);
+	cout << "-1 : 돌아가기" << endl;
+	gotoxy(50, 10);
+	cout << "===========================" << endl;
+}
+
 void UI::showStore(Store & store)
 {
 	system("cls");
@@ -433,7 +449,7 @@ void UI::showIndexErrorMessage()
 	gotoxy(0, 0);
 	cout << "인덱스 에러입니다. 올바른 범위의 수를 입력하세요" << endl;
 	fflush(stdin);
-	getch();
+	_getch();
 }
 
 void UI::outofrangeErrorMessage()
